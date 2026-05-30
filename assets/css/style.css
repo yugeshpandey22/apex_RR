@@ -1,0 +1,76 @@
+/* Variables */
+:root {
+    --primary-color: #d4af37; /* Gold/Premium feel */
+    --secondary-color: #1a1a1a;
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Outfit', sans-serif;
+}
+
+body {
+    font-family: var(--font-body);
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+}
+
+/* Custom Overrides on top of Bootstrap */
+.bg-warning {
+    background-color: var(--primary-color) !important;
+}
+
+.text-warning {
+    color: var(--primary-color) !important;
+}
+
+.btn-warning {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-warning:hover {
+    background-color: #b8962e;
+    border-color: #b8962e;
+}
+
+.btn-outline-warning {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-outline-warning:hover {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+.hover-warning:hover {
+    color: var(--primary-color) !important;
+}
+
+/* Animations */
+.animate-fade-up {
+    animation: fadeUp 1s ease-in-out;
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Hover Effects */
+.hover-lift {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 1rem 3rem rgba(0,0,0,.175) !important;
+}
+

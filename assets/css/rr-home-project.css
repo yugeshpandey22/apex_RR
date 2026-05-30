@@ -1,0 +1,16 @@
+/* CSS for RR Home Projects (rr-home-project.php) */
+
+.rr-hero {
+    min-height: 400px;
+    padding: 120px 0;
+    background: url("../images/rr home banner.webp") center/cover no-repeat;
+}
+
+.rr-heading-font {
+    font-family: var(--font-heading);
+}
+
+.rr-card-img {
+    height: 300px;
+    object-fit: cover;
+}

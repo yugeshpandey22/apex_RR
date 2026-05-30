@@ -1,0 +1,24 @@
+/* CSS for Apex Project (apex-project.php) */
+
+.ap-hero {
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('../images/apex%20banner.webp') center/cover no-repeat;
+    padding: 120px 0;
+}
+
+.ap-title {
+    font-family: var(--font-heading);
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
+}
+
+.ap-divider {
+    width: 80px;
+    height: 4px;
+    background-color: var(--warning-color);
+    margin: 0 auto 20px;
+    border-radius: 2px;
+}
+
+.ap-section-bg {
+    background-color: #fcfcfc;
+    min-height: 400px;
+}
