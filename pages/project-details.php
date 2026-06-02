@@ -49,25 +49,13 @@ if (!empty($project['desktop_banner'])) {
 $mobile_bg = $desktop_bg;
 if (!empty($project['mobile_banner'])) {
     $mobile_bg = BASE_URL . $project['mobile_banner'];
-}
 ?>
-<style>
-.tp-hero {
-    background: url('<?= htmlspecialchars($desktop_bg) ?>') center/cover no-repeat;
-    min-height: 60vh; 
-    display: flex; 
-    align-items: center; 
-    justify-content: center;
-}
-@media(max-width: 767px) {
-    .tp-hero {
-        background-image: url('<?= htmlspecialchars($mobile_bg) ?>') !important;
-        min-height: 250px !important;
-    }
-}
-</style>
 <!-- Project Hero -->
-<section class="project-hero tp-hero">
+<section class="project-hero w-100" style="background-color: #f8f9fa;">
+    <picture>
+        <source media="(max-width: 767px)" srcset="<?= htmlspecialchars($mobile_bg) ?>">
+        <img src="<?= htmlspecialchars($desktop_bg) ?>" class="w-100 d-block" alt="Project Banner" style="object-fit: contain; height: auto;">
+    </picture>
 </section>
 
 <!-- Project Info -->
