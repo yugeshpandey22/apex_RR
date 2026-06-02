@@ -49,6 +49,7 @@ if (!empty($project['desktop_banner'])) {
 $mobile_bg = $desktop_bg;
 if (!empty($project['mobile_banner'])) {
     $mobile_bg = BASE_URL . $project['mobile_banner'];
+}
 ?>
 <!-- Project Hero -->
 <section class="project-hero w-100" style="background-color: #f8f9fa;">
