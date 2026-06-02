@@ -53,18 +53,28 @@ if (!empty($project['mobile_banner'])) {
 ?>
 <style>
 .project-banner-img {
-    width: 100%;
-    height: auto;
+    max-width: 100%;
+    width: auto;
+    max-height: 550px;
     object-fit: contain;
-    object-position: center;
+    margin: 0 auto;
+}
+@media (max-width: 767px) {
+    .project-banner-img {
+        width: 100%;
+        height: auto;
+        max-height: none;
+    }
 }
 </style>
 <!-- Project Hero -->
-<section class="project-hero w-100" style="background-color: #f8f9fa;">
-    <picture>
-        <source media="(max-width: 767px)" srcset="<?= htmlspecialchars($mobile_bg) ?>">
-        <img src="<?= htmlspecialchars($desktop_bg) ?>" class="d-block project-banner-img" alt="Project Banner">
-    </picture>
+<section class="project-hero w-100 py-3 py-md-5" style="background-color: #f8f9fa;">
+    <div class="container text-center">
+        <picture>
+            <source media="(max-width: 767px)" srcset="<?= htmlspecialchars($mobile_bg) ?>">
+            <img src="<?= htmlspecialchars($desktop_bg) ?>" class="d-block project-banner-img rounded-4 shadow-sm" alt="Project Banner">
+        </picture>
+    </div>
 </section>
 
 <!-- Project Info -->
