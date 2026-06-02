@@ -1,6 +1,6 @@
 <?php
 // config/db.php
-define('BASE_URL', '/apex/'); // Change to '/' on live server
+define('BASE_URL', '/'); // Changed for live server
 // Placeholder for database connection
 $host = 'localhost';
 $dbname = 'apex_db';
