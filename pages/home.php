@@ -37,7 +37,41 @@ include '../includes/header.php';
     .carousel-banner-img {
         height: 250px !important; 
         object-fit: cover !important;
-    }
+}
+
+/* Offer Ticker Animation */
+.ticker-wrap {
+    width: 100%;
+    overflow: hidden;
+    background-color: var(--secondary-color);
+    color: #fff;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    border-bottom: 3px solid var(--primary-color);
+}
+.ticker-content {
+    display: inline-block;
+    white-space: nowrap;
+    padding: 12px 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    animation: ticker 35s linear infinite;
+}
+.ticker-content:hover {
+    animation-play-state: paused;
+}
+@keyframes ticker {
+    0% { transform: translateX(100vw); }
+    100% { transform: translateX(-100%); }
+}
+.ticker-item {
+    display: inline-block;
+    padding: 0 3rem;
+    color: #f8f9fa;
+}
+.ticker-item .text-warning {
+    color: var(--primary-color) !important;
 }
 </style>
 
@@ -131,6 +165,16 @@ include '../includes/header.php';
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Next</span>
   </button>
+</div>
+
+<!-- Offer Ticker Bar -->
+<div class="ticker-wrap shadow-sm">
+    <div class="ticker-content">
+        <span class="ticker-item"><i class="fa-solid fa-gift text-warning me-2"></i> <strong>FESTIVE OFFER:</strong> Get 5% Off on early bookings for The Royal Projects!</span>
+        <span class="ticker-item"><i class="fa-solid fa-bolt text-warning me-2"></i> Apex Project Phase 1 is officially <strong>SOLD OUT</strong>. Phase 2 bookings are open now!</span>
+        <span class="ticker-item"><i class="fa-solid fa-tag text-warning me-2"></i> Zero processing fees on home loans exclusively for our partnered banks.</span>
+        <span class="ticker-item"><i class="fa-solid fa-star text-warning me-2"></i> <strong>NEW LAUNCH:</strong> Discover our premium Simple Projects with modern amenities.</span>
+    </div>
 </div>
 
 <!-- Premium About Us Section -->
