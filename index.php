@@ -1,5 +1,5 @@
 <?php
-// Redirect to the home page inside the pages folder
-header("Location: pages/home.php");
+require_once __DIR__ . '/config/db.php';
+header("Location: " . BASE_URL . "pages/home.php");
 exit;
 ?>
