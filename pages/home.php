@@ -35,7 +35,8 @@ include '../includes/header.php';
 /* Phone */
 @media (max-width: 767px) {
     .carousel-banner-img {
-        height: 280px; /* Tall enough to look good, but will crop sides of ultra-wide images */
+        height: auto; 
+        object-fit: contain;
     }
 }
 </style>
