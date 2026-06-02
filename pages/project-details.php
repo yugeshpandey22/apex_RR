@@ -51,11 +51,25 @@ if (!empty($project['mobile_banner'])) {
     $mobile_bg = BASE_URL . $project['mobile_banner'];
 }
 ?>
+<style>
+.project-banner-img {
+    width: 100%;
+    object-fit: cover;
+    max-height: 550px;
+    object-position: center;
+}
+@media (max-width: 767px) {
+    .project-banner-img {
+        height: auto;
+        object-fit: contain;
+    }
+}
+</style>
 <!-- Project Hero -->
 <section class="project-hero w-100" style="background-color: #f8f9fa;">
     <picture>
         <source media="(max-width: 767px)" srcset="<?= htmlspecialchars($mobile_bg) ?>">
-        <img src="<?= htmlspecialchars($desktop_bg) ?>" class="w-100 d-block" alt="Project Banner" style="object-fit: contain; height: auto;">
+        <img src="<?= htmlspecialchars($desktop_bg) ?>" class="d-block project-banner-img" alt="Project Banner">
     </picture>
 </section>
 
