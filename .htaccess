@@ -1,7 +1,7 @@
 Options -Indexes
 
 RewriteEngine On
-RewriteBase /apex/
+RewriteBase /
 
 # Remove .php extension from URLs
 RewriteCond %{REQUEST_FILENAME} !-d
