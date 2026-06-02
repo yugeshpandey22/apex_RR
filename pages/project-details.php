@@ -68,14 +68,6 @@ if (!empty($project['mobile_banner'])) {
 </style>
 <!-- Project Hero -->
 <section class="project-hero tp-hero">
-    <div class="container text-center animate-fade-up mt-5">
-        <div class="d-inline-block p-4 p-md-5 rounded-4" style="background: rgba(0, 0, 0, 0.4); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.2); box-shadow: 0 8px 32px rgba(0,0,0,0.3); max-width: 800px;">
-            <span class="badge bg-warning text-dark px-3 py-2 text-uppercase mb-3 fs-6 tracking-wide shadow">Ongoing</span>
-            <h1 class="display-3 fw-bold text-white mb-3 tp-title" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.5);"><?= htmlspecialchars($project['title']) ?></h1>
-            <div class="tp-divider mx-auto"></div>
-            <p class="fs-4 fw-light text-white mb-0"><i class="fa-solid fa-location-dot text-warning me-2"></i> <?= $category_label ?> Project</p>
-        </div>
-    </div>
 </section>
 
 <!-- Project Info -->
