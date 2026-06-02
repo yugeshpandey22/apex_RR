@@ -9,13 +9,41 @@ $projects = $stmt->fetchAll(PDO::FETCH_ASSOC);
 include '../includes/header.php'; 
 ?>
 
+<?php
+$stmt_banner = $pdo->prepare("SELECT * FROM page_banners WHERE page_name = 'apex_project'");
+$stmt_banner->execute();
+$page_banner = $stmt_banner->fetch(PDO::FETCH_ASSOC);
+
+$banner_desktop = $page_banner && !empty($page_banner['desktop_image']) ? BASE_URL . $page_banner['desktop_image'] : BASE_URL . 'assets/images/apex%20banner.webp';
+$banner_mobile = $page_banner && !empty($page_banner['mobile_image']) ? BASE_URL . $page_banner['mobile_image'] : null;
+$banner_title = $page_banner && !empty($page_banner['title']) ? $page_banner['title'] : 'Apex Projects';
+$banner_subtitle = $page_banner && !empty($page_banner['subtitle']) ? $page_banner['subtitle'] : 'Explore our commercial developments';
+?>
+<style>
+@media(max-width: 767px) {
+    .project-page-banner {
+        height: auto !important;
+        object-fit: contain !important;
+    }
+}
+</style>
 <!-- Page Header -->
 <section class="position-relative bg-dark w-100 overflow-hidden">
-    <img src="<?= BASE_URL ?>assets/images/apex%20banner.webp" class="w-100 project-page-banner" alt="Apex Projects Banner" style="height: 400px; object-fit: fill; display: block;">
-    <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center text-center text-white" style="background: rgba(0,0,0,0.3);">
+    <?php if ($banner_mobile): ?>
+        <picture>
+            <source media="(max-width: 767px)" srcset="<?= htmlspecialchars($banner_mobile) ?>">
+            <img src="<?= htmlspecialchars($banner_desktop) ?>" class="w-100 project-page-banner" alt="<?= htmlspecialchars($banner_title) ?>" style="height: 400px; object-fit: fill; display: block;">
+        </picture>
+    <?php else: ?>
+        <img src="<?= htmlspecialchars($banner_desktop) ?>" class="w-100 project-page-banner" alt="<?= htmlspecialchars($banner_title) ?>" style="height: 400px; object-fit: fill; display: block;">
+    <?php endif; ?>
+    
+    <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center text-center text-white" style="background: rgba(0,0,0,0.3); pointer-events: none;">
         <div class="container animate-fade-up" style="text-shadow: 2px 2px 8px rgba(0,0,0,0.8);">
-            <h1 class="display-3 fw-bold mb-3 rr-heading-font">Apex Projects</h1>
-            <p class="fs-4 fw-light">Explore our commercial developments</p>
+            <h1 class="display-3 fw-bold mb-3 rr-heading-font"><?= htmlspecialchars($banner_title) ?></h1>
+            <?php if ($banner_subtitle): ?>
+                <p class="fs-4 fw-light"><?= htmlspecialchars($banner_subtitle) ?></p>
+            <?php endif; ?>
         </div>
     </div>
 </section>

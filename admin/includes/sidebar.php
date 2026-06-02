@@ -76,6 +76,11 @@
                         <i class="fa-solid fa-images"></i> Manage Banners
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="page_banners">
+                        <i class="fa-regular fa-images"></i> Page Banners
+                    </a>
+                </li>
                 <li class="nav-item mt-4">
                     <a class="nav-link text-danger" href="logout">
                         <i class="fa-solid fa-right-from-bracket"></i> Logout

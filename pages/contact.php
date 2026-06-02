@@ -1,8 +1,46 @@
 <?php include '../includes/header.php'; ?>
 
+<?php
+$stmt = $pdo->prepare("SELECT * FROM page_banners WHERE page_name = 'contact'");
+$stmt->execute();
+$page_banner = $stmt->fetch(PDO::FETCH_ASSOC);
+
+$banner_desktop = $page_banner && !empty($page_banner['desktop_image']) ? BASE_URL . $page_banner['desktop_image'] : BASE_URL . 'assets/images/contact%20banner.webp';
+$banner_mobile = $page_banner && !empty($page_banner['mobile_image']) ? BASE_URL . $page_banner['mobile_image'] : null;
+$banner_title = $page_banner && !empty($page_banner['title']) ? $page_banner['title'] : '';
+$banner_subtitle = $page_banner && !empty($page_banner['subtitle']) ? $page_banner['subtitle'] : '';
+?>
+<style>
+@media(max-width: 767px) {
+    .project-page-banner {
+        height: auto !important;
+        object-fit: contain !important;
+    }
+}
+</style>
 <!-- Page Header -->
-<section class="w-100 p-0 m-0 text-center">
-    <img src="<?= BASE_URL ?>assets/images/contact%20banner.webp" alt="Contact Us" class="img-fluid w-100 d-block" style="aspect-ratio: 1894 / 620; max-height: 620px; object-fit: cover; object-position: center;">
+<section class="position-relative w-100 p-0 m-0 text-center overflow-hidden">
+    <?php if ($banner_mobile): ?>
+        <picture>
+            <source media="(max-width: 767px)" srcset="<?= htmlspecialchars($banner_mobile) ?>">
+            <img src="<?= htmlspecialchars($banner_desktop) ?>" class="img-fluid w-100 d-block project-page-banner" alt="Contact Us" style="aspect-ratio: 1894 / 620; max-height: 620px; object-fit: cover; object-position: center;">
+        </picture>
+    <?php else: ?>
+        <img src="<?= htmlspecialchars($banner_desktop) ?>" class="img-fluid w-100 d-block project-page-banner" alt="Contact Us" style="aspect-ratio: 1894 / 620; max-height: 620px; object-fit: cover; object-position: center;">
+    <?php endif; ?>
+    
+    <?php if ($banner_title || $banner_subtitle): ?>
+    <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center text-center text-white" style="background: rgba(0,0,0,0.4); pointer-events: none;">
+        <div class="container animate-fade-up" style="text-shadow: 2px 2px 8px rgba(0,0,0,0.8);">
+            <?php if ($banner_title): ?>
+                <h1 class="display-3 fw-bold mb-3" style="font-family: var(--font-heading);"><?= htmlspecialchars($banner_title) ?></h1>
+            <?php endif; ?>
+            <?php if ($banner_subtitle): ?>
+                <p class="fs-4 fw-light"><?= htmlspecialchars($banner_subtitle) ?></p>
+            <?php endif; ?>
+        </div>
+    </div>
+    <?php endif; ?>
 </section>
 
 <!-- Contact Section -->
