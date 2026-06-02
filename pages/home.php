@@ -252,6 +252,30 @@ include '../includes/header.php';
                             </g>
                         </g>
 
+                        <!-- Path 4 (Faridabad to BPTP) -->
+                        <g>
+                            <path class="animated-path" d="M 550 250 Q 600 260 650 280" fill="none" stroke="url(#path-gradient)" stroke-width="2" style="animation-delay: 4.5s;"></path>
+                            <g class="map-point">
+                                <circle cx="650" cy="280" r="4" fill="#ffc107" filter="url(#glow)"></circle>
+                                <circle cx="650" cy="280" r="4" fill="#ffc107" class="pulse-ring" style="animation-delay: 5s;"></circle>
+                                <foreignObject x="600" y="290" width="100" height="40" >
+                                    <div class="bg-white text-dark border rounded shadow-sm text-center py-1 px-2" style="font-size: 12px; font-weight: bold;">BPTP</div>
+                                </foreignObject>
+                            </g>
+                        </g>
+
+                        <!-- Path 5 (Faridabad to World Street) -->
+                        <g>
+                            <path class="animated-path" d="M 550 250 Q 500 280 450 320" fill="none" stroke="url(#path-gradient)" stroke-width="2" style="animation-delay: 6s;"></path>
+                            <g class="map-point">
+                                <circle cx="450" cy="320" r="4" fill="#ffc107" filter="url(#glow)"></circle>
+                                <circle cx="450" cy="320" r="4" fill="#ffc107" class="pulse-ring" style="animation-delay: 6.5s;"></circle>
+                                <foreignObject x="400" y="330" width="100" height="40" >
+                                    <div class="bg-white text-dark border rounded shadow-sm text-center py-1 px-2" style="font-size: 11px; font-weight: bold;">World Street</div>
+                                </foreignObject>
+                            </g>
+                        </g>
+
                     </svg>
                 </div>
 
