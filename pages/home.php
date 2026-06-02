@@ -43,22 +43,23 @@ include '../includes/header.php';
 .ticker-wrap {
     width: 100%;
     overflow: hidden;
-    background: linear-gradient(90deg, #111, #222, #111); /* Premium sleek dark background */
-    color: #fff;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
     box-sizing: border-box;
     display: flex;
     align-items: center;
-    border-bottom: 2px solid var(--primary-color);
-    box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+    border-bottom: 2px solid rgba(0,0,0,0.1);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 .ticker-content {
     display: flex;
     white-space: nowrap;
-    padding: 15px 0;
-    font-size: 1.15rem;
-    font-weight: 500;
+    padding: 12px 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    font-family: var(--font-body);
     letter-spacing: 0.5px;
-    animation: ticker 30s linear infinite;
+    animation: ticker 35s linear infinite;
 }
 .ticker-content:hover {
     animation-play-state: paused;
@@ -70,10 +71,14 @@ include '../includes/header.php';
 .ticker-item {
     display: inline-block;
     padding: 0 3rem;
-    color: #f8f9fa;
+    color: var(--secondary-color);
 }
-.ticker-item .text-warning {
-    color: var(--primary-color) !important;
+.ticker-item i {
+    color: #fff;
+    background: var(--secondary-color);
+    padding: 6px;
+    border-radius: 50%;
+    font-size: 0.9rem;
 }
 </style>
 
@@ -172,10 +177,10 @@ include '../includes/header.php';
 <!-- Offer Ticker Bar -->
 <div class="ticker-wrap shadow-sm">
     <div class="ticker-content">
-        <span class="ticker-item"><i class="fa-solid fa-gift text-warning me-2"></i> <strong>FESTIVE OFFER:</strong> Get 5% Off on early bookings for The Royal Projects!</span>
-        <span class="ticker-item"><i class="fa-solid fa-bolt text-warning me-2"></i> Apex Project Phase 1 is officially <strong>SOLD OUT</strong>. Phase 2 bookings are open now!</span>
-        <span class="ticker-item"><i class="fa-solid fa-tag text-warning me-2"></i> Zero processing fees on home loans exclusively for our partnered banks.</span>
-        <span class="ticker-item"><i class="fa-solid fa-star text-warning me-2"></i> <strong>NEW LAUNCH:</strong> Discover our premium Simple Projects with modern amenities.</span>
+        <span class="ticker-item"><i class="fa-solid fa-gift me-2"></i> <strong>FESTIVE OFFER:</strong> Get 5% Off on early bookings for The Royal Projects!</span>
+        <span class="ticker-item"><i class="fa-solid fa-bolt me-2"></i> Apex Project Phase 1 is officially <strong>SOLD OUT</strong>. Phase 2 bookings are open now!</span>
+        <span class="ticker-item"><i class="fa-solid fa-tag me-2"></i> Zero processing fees on home loans exclusively for our partnered banks.</span>
+        <span class="ticker-item"><i class="fa-solid fa-star me-2"></i> <strong>NEW LAUNCH:</strong> Discover our premium Simple Projects with modern amenities.</span>
     </div>
 </div>
 
