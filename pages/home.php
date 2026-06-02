@@ -24,7 +24,7 @@ include '../includes/header.php';
   
   <div class="carousel-inner">
         <div class="carousel-item active">
-          <img src="<?= BASE_URL ?>assets/images/hero-1.webp" class="d-block w-100" style="aspect-ratio: 2065/762; width: 100%; object-fit: contain; background-color: #000;" alt="Premium Amenities">
+          <img src="<?= BASE_URL ?>assets/images/hero-1.webp" class="d-block w-100" style="aspect-ratio: 2065/762; width: 100%; object-fit: fill;" alt="Premium Amenities">
           <div class="carousel-caption d-flex flex-column align-items-center justify-content-center" style="top: 0; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.5);">
             <div class="text-center text-white px-3 animate-fade-up">
                 <h1 class="display-3 fw-bold mb-3" style="font-family: var(--font-heading); text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">Premium Amenities</h1>
@@ -34,7 +34,7 @@ include '../includes/header.php';
         </div>
 
         <div class="carousel-item">
-          <img src="<?= BASE_URL ?>assets/images/rr%20home%20banner.webp" class="d-block w-100" style="aspect-ratio: 2065/762; width: 100%; object-fit: contain; background-color: #000;" alt="The Royal">
+          <img src="<?= BASE_URL ?>assets/images/rr%20home%20banner.webp" class="d-block w-100" style="aspect-ratio: 2065/762; width: 100%; object-fit: fill;" alt="The Royal">
           <div class="carousel-caption d-flex flex-column align-items-center justify-content-center" style="top: 0; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.5);">
             <div class="text-center text-white px-3 animate-fade-up">
                 <h1 class="display-3 fw-bold mb-3" style="font-family: var(--font-heading); text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">The Royal</h1>
@@ -44,7 +44,7 @@ include '../includes/header.php';
         </div>
 
         <div class="carousel-item">
-          <img src="<?= BASE_URL ?>assets/images/apex%20banner.webp" class="d-block w-100" style="aspect-ratio: 2065/762; width: 100%; object-fit: contain; background-color: #000;" alt="The Price Simple Project">
+          <img src="<?= BASE_URL ?>assets/images/apex%20banner.webp" class="d-block w-100" style="aspect-ratio: 2065/762; width: 100%; object-fit: fill;" alt="The Price Simple Project">
           <div class="carousel-caption d-flex flex-column align-items-center justify-content-center" style="top: 0; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.5);">
             <div class="text-center text-white px-3 animate-fade-up">
                 <h1 class="display-3 fw-bold mb-3" style="font-family: var(--font-heading); text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">The Price Simple Project</h1>
