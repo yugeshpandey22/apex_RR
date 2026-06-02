@@ -37,10 +37,10 @@ $apex_projects = $stmt_apex->fetchAll(PDO::FETCH_ASSOC);
 <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm py-3">
     <div class="container">
         <div class="d-flex align-items-center">
-            <a class="navbar-brand d-flex align-items-center me-2" href="<?= BASE_URL ?>pages/rr-home-project">
+            <a class="navbar-brand d-flex align-items-center me-2" href="<?= BASE_URL ?>pages/rr-home-project.php">
                 <img src="<?= BASE_URL ?>assets/images/rr-home-logo.png" alt="RR Home" style="max-height: 70px; width: auto; object-fit: contain;" class="mobile-logo-main">
             </a>
-            <a class="navbar-brand d-flex align-items-center d-lg-none" href="<?= BASE_URL ?>pages/apex-project">
+            <a class="navbar-brand d-flex align-items-center d-lg-none" href="<?= BASE_URL ?>pages/apex-project.php">
                 <img src="<?= BASE_URL ?>assets/images/apex_logo.png" alt="Apex" style="max-height: 50px; width: auto; object-fit: contain;">
             </a>
         </div>
@@ -52,10 +52,10 @@ $apex_projects = $stmt_apex->fetchAll(PDO::FETCH_ASSOC);
         <div class="collapse navbar-collapse" id="mainNavbar">
             <ul class="navbar-nav mx-auto mb-2 mb-lg-0 gap-2">
                 <li class="nav-item">
-                    <a class="nav-link fw-semibold <?php echo $current_page == 'home.php' ? 'active text-warning' : ''; ?>" href="<?= BASE_URL ?>pages/home">HOME</a>
+                    <a class="nav-link fw-semibold <?php echo $current_page == 'home.php' ? 'active text-warning' : ''; ?>" href="<?= BASE_URL ?>pages/home.php">HOME</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link fw-semibold <?php echo $current_page == 'about.php' ? 'active text-warning' : ''; ?>" href="<?= BASE_URL ?>pages/about">ABOUT US</a>
+                    <a class="nav-link fw-semibold <?php echo $current_page == 'about.php' ? 'active text-warning' : ''; ?>" href="<?= BASE_URL ?>pages/about.php">ABOUT US</a>
                 </li>
 
                 <li class="nav-item dropdown">
@@ -65,7 +65,7 @@ $apex_projects = $stmt_apex->fetchAll(PDO::FETCH_ASSOC);
                     <ul class="dropdown-menu dropdown-menu-dark shadow border-0 mt-2" aria-labelledby="rrHomeDropdown" style="background-color: #343a40;">
                         <?php if (count($rr_projects) > 0): ?>
                             <?php foreach ($rr_projects as $proj): ?>
-                                <li><a class="dropdown-item py-2" href="<?= BASE_URL ?>pages/project-details?id=<?= $proj['id'] ?>"><?= htmlspecialchars($proj['title']) ?></a></li>
+                                <li><a class="dropdown-item py-2" href="<?= BASE_URL ?>pages/project-details.php?id=<?= $proj['id'] ?>"><?= htmlspecialchars($proj['title']) ?></a></li>
                             <?php endforeach; ?>
                         <?php else: ?>
                             <li><span class="dropdown-item py-2 text-muted">No projects yet</span></li>
@@ -79,7 +79,7 @@ $apex_projects = $stmt_apex->fetchAll(PDO::FETCH_ASSOC);
                     <ul class="dropdown-menu dropdown-menu-dark shadow border-0 mt-2" aria-labelledby="apexDropdown" style="background-color: #343a40;">
                         <?php if (count($apex_projects) > 0): ?>
                             <?php foreach ($apex_projects as $proj): ?>
-                                <li><a class="dropdown-item py-2" href="<?= BASE_URL ?>pages/project-details?id=<?= $proj['id'] ?>"><?= htmlspecialchars($proj['title']) ?></a></li>
+                                <li><a class="dropdown-item py-2" href="<?= BASE_URL ?>pages/project-details.php?id=<?= $proj['id'] ?>"><?= htmlspecialchars($proj['title']) ?></a></li>
                             <?php endforeach; ?>
                         <?php else: ?>
                             <li><span class="dropdown-item py-2 text-muted">No projects yet</span></li>
@@ -87,11 +87,11 @@ $apex_projects = $stmt_apex->fetchAll(PDO::FETCH_ASSOC);
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link fw-semibold <?php echo $current_page == 'contact.php' ? 'active text-warning' : ''; ?>" href="<?= BASE_URL ?>pages/contact">CONTACT US</a>
+                    <a class="nav-link fw-semibold <?php echo $current_page == 'contact.php' ? 'active text-warning' : ''; ?>" href="<?= BASE_URL ?>pages/contact.php">CONTACT US</a>
                 </li>
             </ul>
             <div class="d-flex align-items-center gap-4">
-                <a href="<?= BASE_URL ?>pages/apex-project" class="d-none d-lg-block">
+                <a href="<?= BASE_URL ?>pages/apex-project.php" class="d-none d-lg-block">
                     <img src="<?= BASE_URL ?>assets/images/apex_logo.png" alt="Apex" style="max-height: 95px; width: auto; object-fit: contain;">
                 </a>
                 <button class="btn btn-warning text-white fw-semibold px-4" data-bs-toggle="modal" data-bs-target="#enquireModal">Enquire Now</button>
@@ -110,7 +110,7 @@ $apex_projects = $stmt_apex->fetchAll(PDO::FETCH_ASSOC);
       </div>
       <div class="modal-body">
         <p class="text-muted mb-4">Leave your details and we will get back to you shortly.</p>
-        <form action="send-enquiry" method="POST">
+        <form action="send-enquiry.php" method="POST">
             <div class="mb-3">
                 <input type="text" class="form-control p-3" placeholder="Your Full Name" required>
             </div>
