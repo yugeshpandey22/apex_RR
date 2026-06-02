@@ -65,7 +65,7 @@ $enquiries = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                 </td>
                                 <td>
                                     <?php if ($enq['status'] === 'unread'): ?>
-                                        <a href="enquiries.php?mark_read=<?= $enq['id'] ?>" class="btn btn-sm btn-primary">Mark Read</a>
+                                        <a href="enquiries?mark_read=<?= $enq['id'] ?>" class="btn btn-sm btn-primary">Mark Read</a>
                                     <?php endif; ?>
                                 </td>
                             </tr>

@@ -29,9 +29,19 @@ include '../includes/header.php';
 ?>
 
 <?php
-$hero_img = "/apex/assets/images/projects-hero.jpg"; // Default fallback banner
+$hero_img = (BASE_URL . "assets/images/projects-hero.webp"); // Default fallback banner
 if (count($media) > 0 && !empty($media[0]['file_path'])) {
-    $hero_img = "/apex/" . $media[0]['file_path'];
+    $hero_img = BASE_URL . $media[0]['file_path'];
+} else {
+    // Custom fallbacks for specific projects
+    $t = strtolower($project['title']);
+    if (strpos($t, 'royal') !== false) {
+        $hero_img = BASE_URL . "assets/images/rr%20home%20banner.webp";
+    } elseif (strpos($t, 'prince') !== false || strpos($t, 'price') !== false) {
+        $hero_img = BASE_URL . "assets/images/hero-1.webp";
+    } elseif (strpos($t, 'simple') !== false) {
+        $hero_img = BASE_URL . "assets/images/apex%20banner.webp";
+    }
 }
 $hero_bg_style = "background: url('" . htmlspecialchars($hero_img) . "') center/cover no-repeat; min-height: 60vh; display: flex; align-items: center; justify-content: center;";
 ?>
@@ -99,7 +109,7 @@ $hero_bg_style = "background: url('" . htmlspecialchars($hero_img) . "') center/
                     <?php foreach ($media as $image): ?>
                     <div class="col-md-6 col-lg-6">
                         <div class="gallery-img-wrap shadow-sm rounded-4 overflow-hidden h-100 hover-lift" style="cursor: pointer;">
-                            <img src="/apex/<?= htmlspecialchars($image['file_path']) ?>" class="img-fluid w-100 h-100 object-fit-cover transition-all" style="min-height: 250px; max-height: 300px;" alt="Gallery Image" onclick="window.open(this.src, '_blank')">
+                            <img src="<?= BASE_URL ?><?= htmlspecialchars($image['file_path']) ?>" class="img-fluid w-100 h-100 object-fit-cover transition-all" style="min-height: 250px; max-height: 300px;" alt="Gallery Image" onclick="window.open(this.src, '_blank')">
                         </div>
                     </div>
                     <?php endforeach; ?>
@@ -118,7 +128,7 @@ $hero_bg_style = "background: url('" . htmlspecialchars($hero_img) . "') center/
                         <p class="text-muted mb-0">Contact our real estate specialists directly.</p>
                     </div>
                     
-                    <form action="send-enquiry.php" method="POST">
+                    <form action="send-enquiry" method="POST">
                         <input type="hidden" name="project_name" value="<?= htmlspecialchars($project['title']) ?>">
                         <div class="mb-3">
                             <input type="text" class="form-control p-3 rounded-3 bg-white border" name="name" placeholder="Enter your full name" required>
@@ -138,3 +148,6 @@ $hero_bg_style = "background: url('" . htmlspecialchars($hero_img) . "') center/
 </section>
 
 <?php include '../includes/footer.php'; ?>
+
+
+

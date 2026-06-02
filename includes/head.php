@@ -12,16 +12,21 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <!-- Custom Global CSS -->
-<link rel="stylesheet" href="/apex/assets/css/style.css">
+<link rel="stylesheet" href="<?= BASE_URL ?>assets/css/style.css">
+<link rel="stylesheet" href="<?= BASE_URL ?>assets/css/responsive.css">
+<link rel="stylesheet" href="<?= BASE_URL ?>assets/css/map.css">
 
 <!-- Page Specific CSS -->
 <?php 
-$page_css = str_replace('.php', '.css', basename($_SERVER['PHP_SELF']));
-$css_path = $_SERVER['DOCUMENT_ROOT'] . "/apex/assets/css/" . $page_css;
+$page_css = str_replace('.php', '.css', basename($_SERVER['SCRIPT_FILENAME']));
+$css_path = __DIR__ . "/../assets/css/" . $page_css;
 if (file_exists($css_path)) {
-    echo '<link rel="stylesheet" href="/apex/assets/css/' . $page_css . '?v=' . time() . '">';
+    echo '<link rel="stylesheet" href="' . BASE_URL . 'assets/css/' . $page_css . '?v=' . time() . '">';
 }
 
 
 ?>
+
+
+
 

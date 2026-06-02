@@ -5,7 +5,7 @@
     <h4 class="mb-0">Add Project</h4>
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb mb-0">
-            <li class="breadcrumb-item"><a href="projects.php">Projects</a></li>
+            <li class="breadcrumb-item"><a href="projects">Projects</a></li>
             <li class="breadcrumb-item active" aria-current="page">Add Project</li>
         </ol>
     </nav>
@@ -32,7 +32,7 @@
             <?php unset($_SESSION['error_msg']); ?>
         <?php endif; ?>
 
-        <form action="process_project.php" method="POST" enctype="multipart/form-data">
+        <form action="process_project" method="POST" enctype="multipart/form-data">
             
             <!-- Tabs Nav -->
             <ul class="nav nav-tabs mb-4" id="projectTabs" role="tablist">
@@ -102,7 +102,7 @@
 
             <div class="mt-4">
                 <button type="submit" class="btn btn-primary" name="add_project">Save Project</button>
-                <a href="index.php" class="btn btn-secondary">Cancel</a>
+                <a href="index" class="btn btn-secondary">Cancel</a>
             </div>
             
         </form>
@@ -110,3 +110,4 @@
 </div>
 
 <?php include 'includes/footer.php'; ?>
+

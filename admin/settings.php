@@ -41,7 +41,7 @@ foreach ($settings_data as $row) {
                 <h6 class="m-0 font-weight-bold text-primary">General & Contact Settings</h6>
             </div>
             <div class="card-body">
-                <form action="settings.php" method="POST">
+                <form action="settings" method="POST">
                     
                     <div class="mb-3">
                         <label class="form-label fw-bold">Site Title</label>
@@ -71,3 +71,4 @@ foreach ($settings_data as $row) {
 </div>
 
 <?php include 'includes/footer.php'; ?>
+

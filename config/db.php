@@ -1,5 +1,6 @@
 <?php
 // config/db.php
+define('BASE_URL', '/apex/'); // Change to '/' on live server
 // Placeholder for database connection
 $host = 'localhost';
 $dbname = 'apex_db';
@@ -12,4 +13,6 @@ try {
 } catch(PDOException $e) {
     die("Database Connection failed: " . $e->getMessage() . "<br>Please make sure the database name is correct in config/db.php.");
 }
-?>
+
+
+

@@ -60,7 +60,7 @@ try {
             <p class="mb-0 text-white-50">Here's what's happening with your projects today.</p>
         </div>
         <div class="col-md-4 text-md-end mt-3 mt-md-0">
-            <a href="add_project.php" class="btn btn-light text-primary fw-bold px-4 rounded-pill shadow-sm">
+            <a href="add_project" class="btn btn-light text-primary fw-bold px-4 rounded-pill shadow-sm">
                 <i class="fa-solid fa-plus me-2"></i> Add New Project
             </a>
         </div>
@@ -134,7 +134,7 @@ try {
         <div class="card shadow-sm border-0 h-100">
             <div class="card-header bg-white py-3 d-flex flex-row align-items-center justify-content-between border-bottom-0">
                 <h6 class="m-0 fw-bold text-dark">Recent Enquiries</h6>
-                <a href="enquiries.php" class="btn btn-sm btn-outline-primary rounded-pill px-3">View All</a>
+                <a href="enquiries" class="btn btn-sm btn-outline-primary rounded-pill px-3">View All</a>
             </div>
             <div class="card-body p-0">
                 <div class="table-responsive">
@@ -190,21 +190,21 @@ try {
             </div>
             <div class="card-body">
                 <div class="d-grid gap-3">
-                    <a href="add_project.php" class="btn btn-outline-primary text-start py-3 rounded-3 d-flex align-items-center">
+                    <a href="add_project" class="btn btn-outline-primary text-start py-3 rounded-3 d-flex align-items-center">
                         <div class="icon-circle bg-primary bg-opacity-10 text-primary me-3" style="width: 40px; height: 40px;">
                             <i class="fa-solid fa-plus"></i>
                         </div>
                         <div class="fw-bold">Add a New Project</div>
                     </a>
                     
-                    <a href="enquiries.php" class="btn btn-outline-danger text-start py-3 rounded-3 d-flex align-items-center">
+                    <a href="enquiries" class="btn btn-outline-danger text-start py-3 rounded-3 d-flex align-items-center">
                         <div class="icon-circle bg-danger bg-opacity-10 text-danger me-3" style="width: 40px; height: 40px;">
                             <i class="fa-solid fa-inbox"></i>
                         </div>
                         <div class="fw-bold">Check New Enquiries</div>
                     </a>
 
-                    <a href="settings.php" class="btn btn-outline-secondary text-start py-3 rounded-3 d-flex align-items-center">
+                    <a href="settings" class="btn btn-outline-secondary text-start py-3 rounded-3 d-flex align-items-center">
                         <div class="icon-circle bg-secondary bg-opacity-10 text-secondary me-3" style="width: 40px; height: 40px;">
                             <i class="fa-solid fa-gear"></i>
                         </div>
@@ -217,3 +217,4 @@ try {
 </div>
 
 <?php include 'includes/footer.php'; ?>
+

@@ -1,0 +1,95 @@
+/* Global Mobile Responsive Styles */
+
+@media (max-width: 768px) {
+
+    /* General Typography Fixes */
+    .display-3 {
+        font-size: 2.5rem !important;
+    }
+    
+    .display-4 {
+        font-size: 2rem !important;
+    }
+    
+    .display-5 {
+        font-size: 1.8rem !important;
+    }
+    
+    .display-6 {
+        font-size: 1.5rem !important;
+    }
+
+    /* Padding Fixes */
+    .py-5 {
+        padding-top: 2rem !important;
+        padding-bottom: 2rem !important;
+    }
+    
+    .p-5 {
+        padding: 1.5rem !important;
+    }
+
+    /* Experience Badge */
+    .experience-badge {
+        position: relative !important;
+        width: 100% !important;
+        margin-top: 20px !important;
+        right: auto !important;
+        bottom: auto !important;
+    }
+
+    /* Mission & Vision Icons */
+    .mission-vision-card i.position-absolute {
+        font-size: 8rem !important;
+        opacity: 0.5;
+    }
+
+    /* Remove fixed heights from mobile so it scales naturally */
+    .carousel-item img {
+        height: auto !important;
+        min-height: 0 !important;
+        max-height: none !important;
+        object-fit: contain !important;
+        width: 100% !important;
+        background-color: transparent !important;
+    }
+
+    .carousel-item > div.d-flex {
+        height: auto !important;
+        min-height: 250px !important;
+    }
+
+    .carousel-caption h1.display-3 {
+        font-size: 2.2rem !important;
+        line-height: 1.2 !important;
+    }
+    
+    .carousel-caption p.fs-4 {
+        font-size: 1.1rem !important;
+    }
+
+    .mobile-logo-main {
+        max-height: 45px !important;
+    }
+
+    /* Fix Project Page Banners (Apex/RR Home) */
+    .project-page-banner {
+        height: auto !important;
+        min-height: 0 !important;
+        max-height: none !important;
+        object-fit: contain !important;
+        width: 100% !important;
+        background-color: transparent !important;
+    }
+
+    .project-page-banner + div h1 {
+        font-size: 1.8rem !important;
+        line-height: 1.2 !important;
+        margin-bottom: 0.5rem !important;
+    }
+
+    .project-page-banner + div p {
+        font-size: 1rem !important;
+        margin-bottom: 0 !important;
+    }
+}

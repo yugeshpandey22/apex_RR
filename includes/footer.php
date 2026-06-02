@@ -3,8 +3,8 @@
         <div class="row">
             <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
                 <div class="d-flex align-items-center mb-4">
-                    <a href="/apex/pages/rr-home-project.php" class="bg-white p-3 rounded-3 shadow d-inline-block">
-                        <img src="/apex/assets/images/rr-home-logo.png" alt="RR Home" style="max-height: 55px; width: auto; object-fit: contain;">
+                    <a href="<?= BASE_URL ?>pages/rr-home-project" class="bg-white p-3 rounded-3 shadow d-inline-block">
+                        <img src="<?= BASE_URL ?>assets/images/rr-home-logo.png" alt="RR Home" style="max-height: 55px; width: auto; object-fit: contain;">
                     </a>
                 </div>
                 <ul class="list-unstyled text-secondary mt-3">
@@ -26,18 +26,18 @@
             <div class="col-lg-4 col-md-6 mb-4 mb-md-0 ps-lg-5">
                 <h4 class="text-white mb-4 fs-5 fw-bold position-relative pb-2" style="border-bottom: 2px solid #ffc107; display: inline-block;">Quick Links</h4>
                 <ul class="list-unstyled mb-5">
-                    <li class="mb-3"><a href="/apex/pages/home.php" class="text-secondary text-decoration-none hover-warning transition-all d-flex align-items-center"><i class="fa-solid fa-angle-right me-2 text-warning fs-6"></i>Home</a></li>
-                    <li class="mb-3"><a href="/apex/pages/about.php" class="text-secondary text-decoration-none hover-warning transition-all d-flex align-items-center"><i class="fa-solid fa-angle-right me-2 text-warning fs-6"></i>About Us</a></li>
-                    <li class="mb-3"><a href="/apex/pages/projects.php" class="text-secondary text-decoration-none hover-warning transition-all d-flex align-items-center"><i class="fa-solid fa-angle-right me-2 text-warning fs-6"></i>Projects</a></li>
-                    <li class="mb-3"><a href="/apex/pages/contact.php" class="text-secondary text-decoration-none hover-warning transition-all d-flex align-items-center"><i class="fa-solid fa-angle-right me-2 text-warning fs-6"></i>Contact Us</a></li>
+                    <li class="mb-3"><a href="<?= BASE_URL ?>pages/home" class="text-secondary text-decoration-none hover-warning transition-all d-flex align-items-center"><i class="fa-solid fa-angle-right me-2 text-warning fs-6"></i>Home</a></li>
+                    <li class="mb-3"><a href="<?= BASE_URL ?>pages/about" class="text-secondary text-decoration-none hover-warning transition-all d-flex align-items-center"><i class="fa-solid fa-angle-right me-2 text-warning fs-6"></i>About Us</a></li>
+                    <li class="mb-3"><a href="<?= BASE_URL ?>pages/projects" class="text-secondary text-decoration-none hover-warning transition-all d-flex align-items-center"><i class="fa-solid fa-angle-right me-2 text-warning fs-6"></i>Projects</a></li>
+                    <li class="mb-3"><a href="<?= BASE_URL ?>pages/contact" class="text-secondary text-decoration-none hover-warning transition-all d-flex align-items-center"><i class="fa-solid fa-angle-right me-2 text-warning fs-6"></i>Contact Us</a></li>
                 </ul>
 
             </div>
             
             <div class="col-lg-4 col-md-12">
                 <div class="d-flex align-items-center mb-4">
-                    <a href="/apex/pages/apex-project.php" class="bg-white p-3 rounded-3 shadow d-inline-block">
-                        <img src="/apex/assets/images/apex_logo.png" alt="Apex" style="max-height: 55px; width: auto; object-fit: contain;">
+                    <a href="<?= BASE_URL ?>pages/apex-project" class="bg-white p-3 rounded-3 shadow d-inline-block">
+                        <img src="<?= BASE_URL ?>assets/images/apex_logo.png" alt="Apex" style="max-height: 55px; width: auto; object-fit: contain;">
                     </a>
                 </div>
                 <ul class="list-unstyled text-secondary mt-3">
@@ -68,6 +68,14 @@
     </div>
 </footer>
 
+<!-- Floating WhatsApp Button -->
+<a href="https://wa.me/919971199138" class="whatsapp-float d-flex align-items-center justify-content-center shadow-lg hover-lift" target="_blank" style="position: fixed; width: 60px; height: 60px; bottom: 40px; right: 40px; background-color: #25d366; color: #FFF; border-radius: 50px; text-align: center; font-size: 35px; z-index: 9999; text-decoration: none;">
+    <i class="fa-brands fa-whatsapp"></i>
+</a>
+
 <?php include __DIR__ . '/scripts.php'; ?>
 </body>
 </html>
+
+
+

@@ -22,7 +22,7 @@
 
             <ul class="nav flex-column">
                 <li class="nav-item">
-                    <a class="nav-link" href="index.php">
+                    <a class="nav-link" href="index">
                         <i class="fa-solid fa-gauge"></i> Dashboard
                     </a>
                 </li>
@@ -33,13 +33,13 @@
                     <div class="collapse show" id="projectsMenu">
                         <ul class="nav flex-column ms-3">
                             <li class="nav-item">
-                                <a class="nav-link" href="projects.php?category=rr_home"><i class="fa-solid fa-minus"></i> RR Home Project</a>
+                                <a class="nav-link" href="projects?category=rr_home"><i class="fa-solid fa-minus"></i> RR Home Project</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="projects.php?category=apex"><i class="fa-solid fa-minus"></i> Apex Project</a>
+                                <a class="nav-link" href="projects?category=apex"><i class="fa-solid fa-minus"></i> Apex Project</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link active" href="add_project.php"><i class="fa-solid fa-plus text-success"></i> Add Project</a>
+                                <a class="nav-link active" href="add_project"><i class="fa-solid fa-plus text-success"></i> Add Project</a>
                             </li>
                         </ul>
                     </div>
@@ -51,10 +51,10 @@
                     <div class="collapse" id="settingsMenu">
                         <ul class="nav flex-column ms-3">
                             <li class="nav-item">
-                                <a class="nav-link" href="settings.php"><i class="fa-solid fa-minus"></i> General Settings</a>
+                                <a class="nav-link" href="settings"><i class="fa-solid fa-minus"></i> General Settings</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="profile.php"><i class="fa-solid fa-minus"></i> Profile</a>
+                                <a class="nav-link" href="profile"><i class="fa-solid fa-minus"></i> Profile</a>
                             </li>
                         </ul>
                     </div>
@@ -66,18 +66,18 @@
                     <div class="collapse" id="enquiriesMenu">
                         <ul class="nav flex-column ms-3">
                             <li class="nav-item">
-                                <a class="nav-link" href="enquiries.php"><i class="fa-solid fa-minus"></i> Manage Enquiries</a>
+                                <a class="nav-link" href="enquiries"><i class="fa-solid fa-minus"></i> Manage Enquiries</a>
                             </li>
                         </ul>
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="banners.php">
+                    <a class="nav-link" href="banners">
                         <i class="fa-solid fa-images"></i> Manage Banners
                     </a>
                 </li>
                 <li class="nav-item mt-4">
-                    <a class="nav-link text-danger" href="logout.php">
+                    <a class="nav-link text-danger" href="logout">
                         <i class="fa-solid fa-right-from-bracket"></i> Logout
                     </a>
                 </li>
@@ -89,3 +89,4 @@
             <div class="top-header rounded d-flex justify-content-center">
                 <span class="badge bg-success py-2 px-4" style="font-size: 1rem;">WELCOME TO RRHOMES ADMIN DASHBOARD</span>
             </div>
+

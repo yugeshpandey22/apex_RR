@@ -45,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['edit_project'])) {
 
 <div class="d-flex justify-content-between align-items-center mb-4">
     <h4 class="mb-0">Edit Project</h4>
-    <a href="projects.php?category=<?= htmlspecialchars($project['category']) ?>" class="btn btn-outline-secondary"><i class="fa-solid fa-arrow-left me-1"></i> Back to Projects</a>
+    <a href="projects?category=<?= htmlspecialchars($project['category']) ?>" class="btn btn-outline-secondary"><i class="fa-solid fa-arrow-left me-1"></i> Back to Projects</a>
 </div>
 
 <?php if ($success_msg): ?>
@@ -57,7 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['edit_project'])) {
 
 <div class="card shadow-sm border-0 mb-4">
     <div class="card-body">
-        <form action="edit_project.php?id=<?= $id ?>" method="POST" enctype="multipart/form-data">
+        <form action="edit_project?id=<?= $id ?>" method="POST" enctype="multipart/form-data">
             
             <ul class="nav nav-tabs mb-4" id="projectTabs" role="tablist">
                 <li class="nav-item" role="presentation">
@@ -119,7 +119,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['edit_project'])) {
                     <div class="row g-3 mb-3">
                         <?php foreach ($media as $img): ?>
                             <div class="col-md-3">
-                                <img src="/apex/<?= htmlspecialchars($img['file_path']) ?>" class="img-fluid rounded border" alt="Project Image">
+                                <img src="<?= BASE_URL ?><?= htmlspecialchars($img['file_path']) ?>" class="img-fluid rounded border" alt="Project Image">
                             </div>
                         <?php endforeach; ?>
                         <?php if (count($media) == 0): ?>
@@ -170,3 +170,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['edit_project'])) {
 </script>
 
 <?php include 'includes/footer.php'; ?>
+
+
+

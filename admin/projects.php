@@ -27,7 +27,7 @@ $projects = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 <div class="d-flex justify-content-between align-items-center mb-4">
     <h4 class="mb-0"><?= htmlspecialchars($category_name) ?></h4>
-    <a href="add_project.php" class="btn btn-primary"><i class="fa-solid fa-plus me-1"></i> Add New</a>
+    <a href="add_project" class="btn btn-primary"><i class="fa-solid fa-plus me-1"></i> Add New</a>
 </div>
 
 <div class="card shadow-sm border-0 mb-4">
@@ -65,8 +65,8 @@ $projects = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                     <?= date('M d, Y', strtotime($proj['created_at'])) ?>
                                 </td>
                                 <td class="pe-4 text-end">
-                                    <a href="edit_project.php?id=<?= $proj['id'] ?>" class="btn btn-sm btn-outline-primary"><i class="fa-solid fa-pen-to-square"></i></a>
-                                    <form action="delete_project.php" method="POST" class="d-inline" onsubmit="return confirm('Are you sure you want to delete this project? This action cannot be undone.');">
+                                    <a href="edit_project?id=<?= $proj['id'] ?>" class="btn btn-sm btn-outline-primary"><i class="fa-solid fa-pen-to-square"></i></a>
+                                    <form action="delete_project" method="POST" class="d-inline" onsubmit="return confirm('Are you sure you want to delete this project? This action cannot be undone.');">
                                         <input type="hidden" name="id" value="<?= $proj['id'] ?>">
                                         <input type="hidden" name="category" value="<?= $proj['category'] ?>">
                                         <button type="submit" name="delete_project" class="btn btn-sm btn-outline-danger"><i class="fa-solid fa-trash"></i></button>
@@ -86,3 +86,4 @@ $projects = $stmt->fetchAll(PDO::FETCH_ASSOC);
 </div>
 
 <?php include 'includes/footer.php'; ?>
+

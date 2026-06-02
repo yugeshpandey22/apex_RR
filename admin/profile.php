@@ -55,7 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <h3 class="mb-0">Profile</h3>
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb mb-0">
-            <li class="breadcrumb-item"><a href="settings.php" class="text-decoration-none">Settings</a></li>
+            <li class="breadcrumb-item"><a href="settings" class="text-decoration-none">Settings</a></li>
             <li class="breadcrumb-item active" aria-current="page">Profile</li>
         </ol>
     </nav>
@@ -83,7 +83,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <h6 class="m-0 font-weight-bold">Update Profile</h6>
             </div>
             <div class="card-body">
-                <form action="profile.php" method="POST" enctype="multipart/form-data">
+                <form action="profile" method="POST" enctype="multipart/form-data">
                     <div class="mb-3">
                         <label class="form-label fw-bold">Name</label>
                         <input type="text" class="form-control" name="admin_name" value="<?= htmlspecialchars($settings['admin_name'] ?? 'Admin') ?>" required>
@@ -125,7 +125,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <h6 class="m-0 font-weight-bold">Change Password</h6>
             </div>
             <div class="card-body">
-                <form action="profile.php" method="POST">
+                <form action="profile" method="POST">
                     <div class="mb-3">
                         <label class="form-label fw-bold">Old Password</label>
                         <input type="password" class="form-control" name="old_password">
@@ -149,3 +149,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </div>
 
 <?php include 'includes/footer.php'; ?>
+

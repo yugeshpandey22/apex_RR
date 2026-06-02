@@ -65,9 +65,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </form>
     
     <div class="text-center mt-4">
-        <a href="../" class="text-muted text-decoration-none small"><i class="fa-solid fa-arrow-left me-1"></i> Back to Website</a>
+        <a href="<?= BASE_URL ?>" class="text-muted text-decoration-none small"><i class="fa-solid fa-arrow-left me-1"></i> Back to Website</a>
     </div>
 </div>
 
 </body>
 </html>
+
+

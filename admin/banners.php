@@ -119,7 +119,7 @@ $banners = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <?php foreach ($banners as $b): ?>
             <div class="col-md-6 col-lg-4">
                 <div class="card shadow-sm border-0 h-100">
-                    <img src="/apex/<?= htmlspecialchars($b['image_path']) ?>" class="card-img-top object-fit-cover" style="height: 200px;" alt="Banner">
+                    <img src="<?= BASE_URL ?><?= htmlspecialchars($b['image_path']) ?>" class="card-img-top object-fit-cover" style="height: 200px;" alt="Banner">
                     <div class="card-body">
                         <?php if ($b['title']): ?>
                             <h5 class="card-title fw-bold"><?= htmlspecialchars($b['title']) ?></h5>
@@ -133,7 +133,7 @@ $banners = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     </div>
                     <div class="card-footer bg-white border-0 text-end">
                         <button class="btn btn-sm btn-outline-primary me-2" data-bs-toggle="modal" data-bs-target="#editBannerModal<?= $b['id'] ?>"><i class="fa-solid fa-pen"></i> Edit</button>
-                        <a href="banners.php?delete=<?= $b['id'] ?>" class="btn btn-sm btn-outline-danger" onclick="return confirm('Delete this banner?');"><i class="fa-solid fa-trash"></i> Delete</a>
+                        <a href="banners?delete=<?= $b['id'] ?>" class="btn btn-sm btn-outline-danger" onclick="return confirm('Delete this banner?');"><i class="fa-solid fa-trash"></i> Delete</a>
                     </div>
                 </div>
 
@@ -146,7 +146,7 @@ $banners = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                       </div>
                       <div class="modal-body">
-                        <form action="banners.php" method="POST" enctype="multipart/form-data">
+                        <form action="banners" method="POST" enctype="multipart/form-data">
                             <input type="hidden" name="banner_id" value="<?= $b['id'] ?>">
                             
                             <div class="mb-3">
@@ -196,7 +196,7 @@ $banners = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form action="banners.php" method="POST" enctype="multipart/form-data">
+        <form action="banners" method="POST" enctype="multipart/form-data">
             
             <div class="alert alert-info small">
                 <i class="fa-solid fa-circle-info"></i> For best results on the homepage, upload wide images (e.g. 1920x800 pixels). You can upload a plain image, or one with text already designed into it.
@@ -231,3 +231,6 @@ $banners = $stmt->fetchAll(PDO::FETCH_ASSOC);
 </div>
 
 <?php include 'includes/footer.php'; ?>
+
+
+

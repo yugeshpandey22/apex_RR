@@ -1,8 +1,14 @@
 <?php include '../includes/header.php'; ?>
 
 <!-- Page Hero -->
-<section class="w-100 overflow-hidden text-center" style="background-color: #000;">
-    <img src="../assets/images/about%20us%20banner%20.webp" alt="About Us" style="width: 100%; height: auto; max-width: 1730px; display: block; margin: 0 auto;">
+<section class="position-relative bg-dark w-100 overflow-hidden text-center">
+    <img src="<?= BASE_URL ?>assets/images/projects-hero.webp" class="w-100 project-page-banner" alt="About Us" style="height: 400px; object-fit: cover; display: block;">
+    <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center text-center text-white" style="background: rgba(0,0,0,0.4);">
+        <div class="container animate-fade-up" style="text-shadow: 2px 2px 8px rgba(0,0,0,0.8);">
+            <h1 class="display-3 fw-bold mb-3" style="font-family: var(--font-heading);">About Us</h1>
+            <p class="fs-4 fw-light">Building Trust, Delivering Excellence</p>
+        </div>
+    </div>
 </section>
 
 <!-- About Content -->
@@ -13,7 +19,7 @@
             <!-- Left Side Image Collage / Interactive Selector -->
             <div class="col-lg-6">
                 <div class="interactive-selector mb-4">
-                    <div class="interactive-option active" style="background-image: url('../assets/images/about-img.jpg');">
+                    <div class="interactive-option active" style="background-image: url('<?= BASE_URL ?>assets/images/about-img.jpg');">
                         <div class="interactive-content">
                             <div class="interactive-icon"><i class="fa-solid fa-building"></i></div>
                             <div class="interactive-text">
@@ -22,7 +28,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="interactive-option" style="background-image: url('../assets/images/hero-1.png');">
+                    <div class="interactive-option" style="background-image: url('<?= BASE_URL ?>assets/images/hero-1.webp');">
                         <div class="interactive-content">
                             <div class="interactive-icon"><i class="fa-solid fa-handshake"></i></div>
                             <div class="interactive-text">
@@ -31,7 +37,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="interactive-option" style="background-image: url('../assets/images/hero-2.jpg');">
+                    <div class="interactive-option" style="background-image: url('<?= BASE_URL ?>assets/images/hero-1.webp');">
                         <div class="interactive-content">
                             <div class="interactive-icon"><i class="fa-solid fa-house-chimney"></i></div>
                             <div class="interactive-text">
@@ -40,7 +46,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="interactive-option" style="background-image: url('../assets/images/projects-hero.jpg');">
+                    <div class="interactive-option" style="background-image: url('<?= BASE_URL ?>assets/images/projects-hero.webp');">
                         <div class="interactive-content">
                             <div class="interactive-icon"><i class="fa-solid fa-gem"></i></div>
                             <div class="interactive-text">
@@ -146,7 +152,7 @@
 </section>
 
 <!-- Stats Section -->
-<section class="py-5 bg-dark text-white position-relative" style="background: linear-gradient(rgba(26, 26, 26, 0.92), rgba(26, 26, 26, 0.92)), url('../assets/images/projects-hero.jpg') center/cover fixed;">
+<section class="py-5 bg-dark text-white position-relative" style="background: linear-gradient(rgba(26, 26, 26, 0.92), rgba(26, 26, 26, 0.92)), url('<?= BASE_URL ?>assets/images/projects-hero.webp') center/cover fixed;">
     <div class="container py-5 text-center position-relative z-1">
         <div class="row g-4">
             <div class="col-md-3 col-sm-6">
@@ -231,7 +237,6 @@
             </div>
         </div>
     </div>
-</section>
 
 <!-- Call To Action -->
 <section class="py-5" style="background-color: var(--primary-color);">
@@ -242,10 +247,12 @@
                 <p class="fs-5 text-white fw-light mb-0">Our experts are waiting to guide you home.</p>
             </div>
             <div class="col-lg-4 text-center text-lg-end">
-                <a href="contact.php" class="btn btn-dark btn-lg px-5 py-3 fw-bold text-warning shadow-lg hover-lift">Contact Us Today</a>
+                <a href="contact" class="btn btn-dark btn-lg px-5 py-3 fw-bold text-warning shadow-lg hover-lift">Contact Us Today</a>
             </div>
         </div>
     </div>
 </section>
 
 <?php include '../includes/footer.php'; ?>
+
+
