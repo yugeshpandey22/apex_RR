@@ -29,24 +29,45 @@ include '../includes/header.php';
 ?>
 
 <?php
-$hero_img = (BASE_URL . "assets/images/projects-hero.webp"); // Default fallback banner
-if (count($media) > 0 && !empty($media[0]['file_path'])) {
-    $hero_img = BASE_URL . $media[0]['file_path'];
+$desktop_bg = BASE_URL . "assets/images/projects-hero.webp"; // Default fallback banner
+if (!empty($project['desktop_banner'])) {
+    $desktop_bg = BASE_URL . $project['desktop_banner'];
+} elseif (count($media) > 0 && !empty($media[0]['file_path'])) {
+    $desktop_bg = BASE_URL . $media[0]['file_path'];
 } else {
     // Custom fallbacks for specific projects
     $t = strtolower($project['title']);
     if (strpos($t, 'royal') !== false) {
-        $hero_img = BASE_URL . "assets/images/rr%20home%20banner.webp";
+        $desktop_bg = BASE_URL . "assets/images/rr%20home%20banner.webp";
     } elseif (strpos($t, 'prince') !== false || strpos($t, 'price') !== false) {
-        $hero_img = BASE_URL . "assets/images/hero-1.webp";
+        $desktop_bg = BASE_URL . "assets/images/hero-1.webp";
     } elseif (strpos($t, 'simple') !== false) {
-        $hero_img = BASE_URL . "assets/images/apex%20banner.webp";
+        $desktop_bg = BASE_URL . "assets/images/apex%20banner.webp";
     }
 }
-$hero_bg_style = "background: url('" . htmlspecialchars($hero_img) . "') center/cover no-repeat; min-height: 60vh; display: flex; align-items: center; justify-content: center;";
+
+$mobile_bg = $desktop_bg;
+if (!empty($project['mobile_banner'])) {
+    $mobile_bg = BASE_URL . $project['mobile_banner'];
+}
 ?>
+<style>
+.tp-hero {
+    background: url('<?= htmlspecialchars($desktop_bg) ?>') center/cover no-repeat;
+    min-height: 60vh; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+}
+@media(max-width: 767px) {
+    .tp-hero {
+        background-image: url('<?= htmlspecialchars($mobile_bg) ?>') !important;
+        min-height: 250px !important;
+    }
+}
+</style>
 <!-- Project Hero -->
-<section class="project-hero tp-hero" style="<?= $hero_bg_style ?>">
+<section class="project-hero tp-hero">
     <div class="container text-center animate-fade-up mt-5">
         <div class="d-inline-block p-4 p-md-5 rounded-4" style="background: rgba(0, 0, 0, 0.4); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.2); box-shadow: 0 8px 32px rgba(0,0,0,0.3); max-width: 800px;">
             <span class="badge bg-warning text-dark px-3 py-2 text-uppercase mb-3 fs-6 tracking-wide shadow">Ongoing</span>

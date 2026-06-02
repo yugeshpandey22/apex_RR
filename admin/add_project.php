@@ -79,10 +79,25 @@
 
                 <!-- Media & Slides Tab -->
                 <div class="tab-pane fade" id="media" role="tabpanel" aria-labelledby="media-tab">
+                    
+                    <div class="mb-4 p-3 border rounded bg-light">
+                        <h6 class="fw-bold mb-3">Project Hero Banners (Optional)</h6>
+                        <div class="mb-3">
+                            <label for="desktopBanner" class="form-label fw-bold">Desktop Hero Banner</label>
+                            <input class="form-control" type="file" id="desktopBanner" name="desktop_banner" accept="image/*">
+                            <div class="form-text">Wide image (e.g., 1920x600). Shown at the top of the project details page on PC.</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="mobileBanner" class="form-label fw-bold">Mobile Hero Banner</label>
+                            <input class="form-control" type="file" id="mobileBanner" name="mobile_banner" accept="image/*">
+                            <div class="form-text">Square or vertical image (e.g., 1080x1080). Shown on phones.</div>
+                        </div>
+                    </div>
+
                     <div class="mb-3">
-                        <label for="projectImages" class="form-label fw-bold">Project Images</label>
+                        <label for="projectImages" class="form-label fw-bold">Project Gallery Images</label>
                         <input class="form-control" type="file" id="projectImages" name="images[]" multiple accept="image/*">
-                        <div class="form-text">You can select multiple images.</div>
+                        <div class="form-text">Select multiple images for the gallery. If no hero banners are uploaded above, the first gallery image is used as the desktop banner.</div>
                     </div>
                 </div>
 

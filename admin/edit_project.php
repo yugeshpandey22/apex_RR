@@ -32,8 +32,37 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['edit_project'])) {
     $seo_title = $_POST['seo_title'];
     $seo_description = $_POST['seo_description'];
 
-    $stmt_update = $pdo->prepare("UPDATE projects SET category=?, title=?, short_description=?, description=?, specifications=?, seo_title=?, seo_description=? WHERE id=?");
-    $stmt_update->execute([$category, $title, $short_description, $description, $specifications, $seo_title, $seo_description, $id]);
+    $upload_dir = '../assets/images/projects/';
+    if (!is_dir($upload_dir)) {
+        mkdir($upload_dir, 0777, true);
+    }
+
+    $desktop_banner_path = $project['desktop_banner'];
+    if (isset($_FILES['desktop_banner']) && $_FILES['desktop_banner']['error'] === UPLOAD_ERR_OK) {
+        $ext = pathinfo($_FILES['desktop_banner']['name'], PATHINFO_EXTENSION);
+        $new_filename = uniqid() . '_hero_desktop.' . $ext;
+        if (move_uploaded_file($_FILES['desktop_banner']['tmp_name'], $upload_dir . $new_filename)) {
+            if ($desktop_banner_path && file_exists('../' . $desktop_banner_path)) {
+                unlink('../' . $desktop_banner_path);
+            }
+            $desktop_banner_path = 'assets/images/projects/' . $new_filename;
+        }
+    }
+
+    $mobile_banner_path = $project['mobile_banner'];
+    if (isset($_FILES['mobile_banner']) && $_FILES['mobile_banner']['error'] === UPLOAD_ERR_OK) {
+        $ext = pathinfo($_FILES['mobile_banner']['name'], PATHINFO_EXTENSION);
+        $new_filename = uniqid() . '_hero_mobile.' . $ext;
+        if (move_uploaded_file($_FILES['mobile_banner']['tmp_name'], $upload_dir . $new_filename)) {
+            if ($mobile_banner_path && file_exists('../' . $mobile_banner_path)) {
+                unlink('../' . $mobile_banner_path);
+            }
+            $mobile_banner_path = 'assets/images/projects/' . $new_filename;
+        }
+    }
+
+    $stmt_update = $pdo->prepare("UPDATE projects SET category=?, title=?, short_description=?, description=?, specifications=?, seo_title=?, seo_description=?, desktop_banner=?, mobile_banner=? WHERE id=?");
+    $stmt_update->execute([$category, $title, $short_description, $description, $specifications, $seo_title, $seo_description, $desktop_banner_path, $mobile_banner_path, $id]);
 
     $success_msg = "Project updated successfully!";
     
@@ -111,8 +140,37 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['edit_project'])) {
                 <!-- Media Tab -->
                 <div class="tab-pane fade" id="media" role="tabpanel" aria-labelledby="media-tab">
                     
+                    <div class="mb-4 p-4 border rounded bg-light">
+                        <h5 class="fw-bold mb-3" style="color: var(--secondary-color);">Hero Banners (Optional)</h5>
+                        <p class="text-muted mb-4">Set specific banners for the top of the project details page. If empty, the first gallery image is used.</p>
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="desktopBanner" class="form-label fw-bold">Desktop Hero Banner</label>
+                                <?php if ($project['desktop_banner']): ?>
+                                    <div class="mb-2">
+                                        <img src="<?= BASE_URL ?><?= htmlspecialchars($project['desktop_banner']) ?>" class="img-thumbnail" style="height: 100px; object-fit: cover;">
+                                    </div>
+                                <?php endif; ?>
+                                <input class="form-control" type="file" id="desktopBanner" name="desktop_banner" accept="image/*">
+                                <div class="form-text">Wide image (e.g., 1920x600). Uploading a new one replaces the old.</div>
+                            </div>
+                            
+                            <div class="col-md-6 mb-3">
+                                <label for="mobileBanner" class="form-label fw-bold">Mobile Hero Banner</label>
+                                <?php if ($project['mobile_banner']): ?>
+                                    <div class="mb-2">
+                                        <img src="<?= BASE_URL ?><?= htmlspecialchars($project['mobile_banner']) ?>" class="img-thumbnail" style="height: 100px; object-fit: cover;">
+                                    </div>
+                                <?php endif; ?>
+                                <input class="form-control" type="file" id="mobileBanner" name="mobile_banner" accept="image/*">
+                                <div class="form-text">Square or vertical image (e.g., 1080x1080). Uploading a new one replaces the old.</div>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="alert alert-info">
-                        <i class="fa-solid fa-info-circle"></i> Currently, editing or deleting individual images is not supported. You can delete the entire project to start over if needed.
+                        <i class="fa-solid fa-info-circle"></i> Currently, editing or deleting individual gallery images is not supported. You can delete the entire project to start over if needed.
                     </div>
 
                     <label class="form-label fw-bold">Current Gallery Images</label>

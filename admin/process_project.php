@@ -12,9 +12,32 @@ if (isset($_POST['add_project'])) {
     $seo_description = $_POST['seo_description'] ?? '';
 
     try {
+        $upload_dir = '../assets/images/projects/';
+        if (!is_dir($upload_dir)) {
+            mkdir($upload_dir, 0777, true);
+        }
+
+        $desktop_banner_path = null;
+        if (isset($_FILES['desktop_banner']) && $_FILES['desktop_banner']['error'] === UPLOAD_ERR_OK) {
+            $ext = pathinfo($_FILES['desktop_banner']['name'], PATHINFO_EXTENSION);
+            $new_filename = uniqid() . '_hero_desktop.' . $ext;
+            if (move_uploaded_file($_FILES['desktop_banner']['tmp_name'], $upload_dir . $new_filename)) {
+                $desktop_banner_path = 'assets/images/projects/' . $new_filename;
+            }
+        }
+
+        $mobile_banner_path = null;
+        if (isset($_FILES['mobile_banner']) && $_FILES['mobile_banner']['error'] === UPLOAD_ERR_OK) {
+            $ext = pathinfo($_FILES['mobile_banner']['name'], PATHINFO_EXTENSION);
+            $new_filename = uniqid() . '_hero_mobile.' . $ext;
+            if (move_uploaded_file($_FILES['mobile_banner']['tmp_name'], $upload_dir . $new_filename)) {
+                $mobile_banner_path = 'assets/images/projects/' . $new_filename;
+            }
+        }
+
         // Insert Project
-        $stmt = $pdo->prepare("INSERT INTO projects (category, title, short_description, description, specifications, seo_title, seo_description) VALUES (?, ?, ?, ?, ?, ?, ?)");
-        $stmt->execute([$category, $title, $short_description, $description, $specifications, $seo_title, $seo_description]);
+        $stmt = $pdo->prepare("INSERT INTO projects (category, title, short_description, description, specifications, seo_title, seo_description, desktop_banner, mobile_banner) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        $stmt->execute([$category, $title, $short_description, $description, $specifications, $seo_title, $seo_description, $desktop_banner_path, $mobile_banner_path]);
         $project_id = $pdo->lastInsertId();
 
         // Handle Image Uploads
