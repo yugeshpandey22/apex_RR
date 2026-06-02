@@ -212,7 +212,7 @@ include '../includes/header.php';
                             <g class="map-point">
                                 <circle cx="400" cy="150" r="4" fill="#ffc107" filter="url(#glow)"></circle>
                                 <circle cx="400" cy="150" r="4" fill="#ffc107" class="pulse-ring"></circle>
-                                <foreignObject x="350" y="105" width="100" height="40" class="d-none d-md-block">
+                                <foreignObject x="350" y="105" width="100" height="40" >
                                     <div class="bg-white text-dark border rounded shadow-sm text-center py-1 px-2" style="font-size: 12px; font-weight: bold;">Delhi</div>
                                 </foreignObject>
                             </g>
@@ -220,7 +220,7 @@ include '../includes/header.php';
                             <g class="map-point">
                                 <circle cx="550" cy="250" r="5" fill="#ffc107" filter="url(#glow)"></circle>
                                 <circle cx="550" cy="250" r="5" fill="#ffc107" class="pulse-ring" style="animation-delay: 1s;"></circle>
-                                <foreignObject x="500" y="270" width="100" height="40" class="d-none d-md-block">
+                                <foreignObject x="500" y="270" width="100" height="40" >
                                     <div class="bg-white text-dark border rounded shadow-sm text-center py-1 px-2" style="font-size: 12px; font-weight: bold;">Faridabad</div>
                                 </foreignObject>
                             </g>
@@ -233,7 +233,7 @@ include '../includes/header.php';
                             <g class="map-point">
                                 <circle cx="250" cy="220" r="4" fill="#ffc107" filter="url(#glow)"></circle>
                                 <circle cx="250" cy="220" r="4" fill="#ffc107" class="pulse-ring" style="animation-delay: 2.5s;"></circle>
-                                <foreignObject x="200" y="235" width="100" height="40" class="d-none d-md-block">
+                                <foreignObject x="200" y="235" width="100" height="40" >
                                     <div class="bg-white text-dark border rounded shadow-sm text-center py-1 px-2" style="font-size: 12px; font-weight: bold;">Gurugram</div>
                                 </foreignObject>
                             </g>
@@ -246,7 +246,7 @@ include '../includes/header.php';
                             <g class="map-point">
                                 <circle cx="550" cy="120" r="4" fill="#ffc107" filter="url(#glow)"></circle>
                                 <circle cx="550" cy="120" r="4" fill="#ffc107" class="pulse-ring" style="animation-delay: 4s;"></circle>
-                                <foreignObject x="500" y="75" width="100" height="40" class="d-none d-md-block">
+                                <foreignObject x="500" y="75" width="100" height="40" >
                                     <div class="bg-white text-dark border rounded shadow-sm text-center py-1 px-2" style="font-size: 12px; font-weight: bold;">Noida</div>
                                 </foreignObject>
                             </g>
