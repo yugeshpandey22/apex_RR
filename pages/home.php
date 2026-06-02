@@ -17,41 +17,76 @@ include '../includes/header.php';
 <!-- Hero Section with Bootstrap Carousel -->
 <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
   <div class="carousel-indicators">
-    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      <?php if (!empty($banners)): ?>
+          <?php foreach ($banners as $index => $banner): ?>
+              <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="<?= $index ?>" class="<?= $index === 0 ? 'active' : '' ?>" <?= $index === 0 ? 'aria-current="true"' : '' ?> aria-label="Slide <?= $index + 1 ?>"></button>
+          <?php endforeach; ?>
+      <?php else: ?>
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      <?php endif; ?>
   </div>
   
   <div class="carousel-inner">
-        <div class="carousel-item active">
-          <img src="<?= BASE_URL ?>assets/images/hero-1.webp" class="d-block w-100" style="aspect-ratio: 2065/762; width: 100%; object-fit: fill;" alt="Premium Amenities">
-          <div class="carousel-caption d-flex flex-column align-items-center justify-content-center" style="top: 0; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.5);">
-            <div class="text-center text-white px-3 animate-fade-up">
-                <h1 class="display-3 fw-bold mb-3" style="font-family: var(--font-heading); text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">Premium Amenities</h1>
-                <p class="fs-4 mb-4 fw-light text-shadow">Everything you need, right at your doorstep</p>
-            </div>
-          </div>
-        </div>
+      <?php if (!empty($banners)): ?>
+          <?php foreach ($banners as $index => $banner): ?>
+              <div class="carousel-item <?= $index === 0 ? 'active' : '' ?>">
+                  <?php if (!empty($banner['link_url'])): ?>
+                      <a href="<?= htmlspecialchars($banner['link_url']) ?>">
+                  <?php endif; ?>
+                  
+                  <img src="<?= BASE_URL ?><?= htmlspecialchars($banner['image_path']) ?>" class="d-block w-100" style="aspect-ratio: 2065/762; width: 100%; object-fit: fill;" alt="<?= htmlspecialchars($banner['title'] ?? 'Banner') ?>">
+                  
+                  <?php if (!empty($banner['link_url'])): ?>
+                      </a>
+                  <?php endif; ?>
 
-        <div class="carousel-item">
-          <img src="<?= BASE_URL ?>assets/images/rr%20home%20banner.webp" class="d-block w-100" style="aspect-ratio: 2065/762; width: 100%; object-fit: fill;" alt="The Royal">
-          <div class="carousel-caption d-flex flex-column align-items-center justify-content-center" style="top: 0; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.5);">
-            <div class="text-center text-white px-3 animate-fade-up">
-                <h1 class="display-3 fw-bold mb-3" style="font-family: var(--font-heading); text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">The Royal</h1>
-                <p class="fs-4 mb-4 fw-light text-shadow">Experience true luxury and elegance</p>
+                  <?php if (!empty($banner['title']) || !empty($banner['subtitle'])): ?>
+                  <div class="carousel-caption d-flex flex-column align-items-center justify-content-center" style="top: 0; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.5); pointer-events: none;">
+                    <div class="text-center text-white px-3 animate-fade-up">
+                        <?php if (!empty($banner['title'])): ?>
+                            <h1 class="display-3 fw-bold mb-3" style="font-family: var(--font-heading); text-shadow: 2px 2px 4px rgba(0,0,0,0.5);"><?= htmlspecialchars($banner['title']) ?></h1>
+                        <?php endif; ?>
+                        <?php if (!empty($banner['subtitle'])): ?>
+                            <p class="fs-4 mb-4 fw-light text-shadow"><?= htmlspecialchars($banner['subtitle']) ?></p>
+                        <?php endif; ?>
+                    </div>
+                  </div>
+                  <?php endif; ?>
+              </div>
+          <?php endforeach; ?>
+      <?php else: ?>
+            <div class="carousel-item active">
+            <img src="<?= BASE_URL ?>assets/images/hero-1.webp" class="d-block w-100" style="aspect-ratio: 2065/762; width: 100%; object-fit: fill;" alt="Premium Amenities">
+            <div class="carousel-caption d-flex flex-column align-items-center justify-content-center" style="top: 0; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.5);">
+                <div class="text-center text-white px-3 animate-fade-up">
+                    <h1 class="display-3 fw-bold mb-3" style="font-family: var(--font-heading); text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">Premium Amenities</h1>
+                    <p class="fs-4 mb-4 fw-light text-shadow">Everything you need, right at your doorstep</p>
+                </div>
             </div>
-          </div>
-        </div>
+            </div>
 
-        <div class="carousel-item">
-          <img src="<?= BASE_URL ?>assets/images/apex%20banner.webp" class="d-block w-100" style="aspect-ratio: 2065/762; width: 100%; object-fit: fill;" alt="The Price Simple Project">
-          <div class="carousel-caption d-flex flex-column align-items-center justify-content-center" style="top: 0; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.5);">
-            <div class="text-center text-white px-3 animate-fade-up">
-                <h1 class="display-3 fw-bold mb-3" style="font-family: var(--font-heading); text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">The Price Simple Project</h1>
-                <p class="fs-4 mb-4 fw-light text-shadow">Affordable living without compromise</p>
+            <div class="carousel-item">
+            <img src="<?= BASE_URL ?>assets/images/rr%20home%20banner.webp" class="d-block w-100" style="aspect-ratio: 2065/762; width: 100%; object-fit: fill;" alt="The Royal">
+            <div class="carousel-caption d-flex flex-column align-items-center justify-content-center" style="top: 0; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.5);">
+                <div class="text-center text-white px-3 animate-fade-up">
+                    <h1 class="display-3 fw-bold mb-3" style="font-family: var(--font-heading); text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">The Royal</h1>
+                    <p class="fs-4 mb-4 fw-light text-shadow">Experience true luxury and elegance</p>
+                </div>
             </div>
-          </div>
-        </div>
+            </div>
+
+            <div class="carousel-item">
+            <img src="<?= BASE_URL ?>assets/images/apex%20banner.webp" class="d-block w-100" style="aspect-ratio: 2065/762; width: 100%; object-fit: fill;" alt="The Price Simple Project">
+            <div class="carousel-caption d-flex flex-column align-items-center justify-content-center" style="top: 0; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.5);">
+                <div class="text-center text-white px-3 animate-fade-up">
+                    <h1 class="display-3 fw-bold mb-3" style="font-family: var(--font-heading); text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">The Price Simple Project</h1>
+                    <p class="fs-4 mb-4 fw-light text-shadow">Affordable living without compromise</p>
+                </div>
+            </div>
+            </div>
+      <?php endif; ?>
   </div>
   
   <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
