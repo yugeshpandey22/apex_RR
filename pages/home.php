@@ -36,27 +36,29 @@ include '../includes/header.php';
 @media (max-width: 767px) {
     .carousel-banner-img {
         height: 250px !important; 
-        object-fit: cover !important;
-}
+    }
+} /* Missing brace fixed */
 
 /* Offer Ticker Animation */
 .ticker-wrap {
     width: 100%;
     overflow: hidden;
-    background-color: var(--secondary-color);
+    background: linear-gradient(90deg, #111, #222, #111); /* Premium sleek dark background */
     color: #fff;
     box-sizing: border-box;
     display: flex;
     align-items: center;
-    border-bottom: 3px solid var(--primary-color);
+    border-bottom: 2px solid var(--primary-color);
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
 }
 .ticker-content {
-    display: inline-block;
+    display: flex;
     white-space: nowrap;
-    padding: 12px 0;
-    font-size: 1.1rem;
-    font-weight: 600;
-    animation: ticker 35s linear infinite;
+    padding: 15px 0;
+    font-size: 1.15rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    animation: ticker 30s linear infinite;
 }
 .ticker-content:hover {
     animation-play-state: paused;
