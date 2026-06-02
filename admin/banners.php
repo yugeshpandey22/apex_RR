@@ -24,8 +24,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_banner'])) {
         if (move_uploaded_file($_FILES['banner_image']['tmp_name'], $target_path)) {
             $db_path = 'assets/images/banners/' . $filename;
             
-            $stmt = $pdo->prepare("INSERT INTO banners (title, subtitle, image_path, link_url) VALUES (?, ?, ?, ?)");
-            $stmt->execute([$title, $subtitle, $db_path, $link_url]);
+            $mobile_db_path = null;
+            if (isset($_FILES['mobile_banner_image']) && $_FILES['mobile_banner_image']['error'] === UPLOAD_ERR_OK) {
+                $mobile_filename = uniqid() . '_mobile_' . basename($_FILES['mobile_banner_image']['name']);
+                $mobile_target_path = $upload_dir . $mobile_filename;
+                if (move_uploaded_file($_FILES['mobile_banner_image']['tmp_name'], $mobile_target_path)) {
+                    $mobile_db_path = 'assets/images/banners/' . $mobile_filename;
+                }
+            }
+            
+            $stmt = $pdo->prepare("INSERT INTO banners (title, subtitle, image_path, mobile_image_path, link_url) VALUES (?, ?, ?, ?, ?)");
+            $stmt->execute([$title, $subtitle, $db_path, $mobile_db_path, $link_url]);
             $success_msg = "Banner uploaded successfully!";
         } else {
             $error_msg = "Failed to upload image.";
@@ -42,8 +51,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['edit_banner'])) {
     $subtitle = $_POST['subtitle'] ?? '';
     $link_url = $_POST['link_url'] ?? '';
 
+    $mobile_db_path = null;
+    $upload_dir = '../assets/images/banners/';
+    
+    // Process mobile image if uploaded
+    if (isset($_FILES['mobile_banner_image']) && $_FILES['mobile_banner_image']['error'] === UPLOAD_ERR_OK) {
+        $mobile_filename = uniqid() . '_mobile_' . basename($_FILES['mobile_banner_image']['name']);
+        $mobile_target_path = $upload_dir . $mobile_filename;
+        
+        if (move_uploaded_file($_FILES['mobile_banner_image']['tmp_name'], $mobile_target_path)) {
+            $mobile_db_path = 'assets/images/banners/' . $mobile_filename;
+            
+            // Delete old mobile image
+            $stmt = $pdo->prepare("SELECT mobile_image_path FROM banners WHERE id = ?");
+            $stmt->execute([$id]);
+            $old_mobile = $stmt->fetchColumn();
+            if ($old_mobile && file_exists('../' . $old_mobile)) {
+                unlink('../' . $old_mobile);
+            }
+        }
+    }
+
     if (isset($_FILES['banner_image']) && $_FILES['banner_image']['error'] === UPLOAD_ERR_OK) {
-        $upload_dir = '../assets/images/banners/';
         $filename = uniqid() . '_' . basename($_FILES['banner_image']['name']);
         $target_path = $upload_dir . $filename;
         
@@ -57,15 +86,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['edit_banner'])) {
                 unlink('../' . $old);
             }
             
-            $stmt = $pdo->prepare("UPDATE banners SET title = ?, subtitle = ?, link_url = ?, image_path = ? WHERE id = ?");
-            $stmt->execute([$title, $subtitle, $link_url, $db_path, $id]);
+            if ($mobile_db_path) {
+                $stmt = $pdo->prepare("UPDATE banners SET title = ?, subtitle = ?, link_url = ?, image_path = ?, mobile_image_path = ? WHERE id = ?");
+                $stmt->execute([$title, $subtitle, $link_url, $db_path, $mobile_db_path, $id]);
+            } else {
+                $stmt = $pdo->prepare("UPDATE banners SET title = ?, subtitle = ?, link_url = ?, image_path = ? WHERE id = ?");
+                $stmt->execute([$title, $subtitle, $link_url, $db_path, $id]);
+            }
             $success_msg = "Banner updated successfully!";
         } else {
             $error_msg = "Failed to upload new image.";
         }
     } else {
-        $stmt = $pdo->prepare("UPDATE banners SET title = ?, subtitle = ?, link_url = ? WHERE id = ?");
-        $stmt->execute([$title, $subtitle, $link_url, $id]);
+        if ($mobile_db_path) {
+            $stmt = $pdo->prepare("UPDATE banners SET title = ?, subtitle = ?, link_url = ?, mobile_image_path = ? WHERE id = ?");
+            $stmt->execute([$title, $subtitle, $link_url, $mobile_db_path, $id]);
+        } else {
+            $stmt = $pdo->prepare("UPDATE banners SET title = ?, subtitle = ?, link_url = ? WHERE id = ?");
+            $stmt->execute([$title, $subtitle, $link_url, $id]);
+        }
         $success_msg = "Banner updated successfully!";
     }
 }
@@ -75,7 +114,7 @@ if (isset($_GET['delete'])) {
     $id = $_GET['delete'];
     
     // Fetch image path to delete file
-    $stmt = $pdo->prepare("SELECT image_path FROM banners WHERE id = ?");
+    $stmt = $pdo->prepare("SELECT image_path, mobile_image_path FROM banners WHERE id = ?");
     $stmt->execute([$id]);
     $banner = $stmt->fetch();
     
@@ -83,6 +122,12 @@ if (isset($_GET['delete'])) {
         $file_to_delete = '../' . $banner['image_path'];
         if (file_exists($file_to_delete)) {
             unlink($file_to_delete);
+        }
+        if (!empty($banner['mobile_image_path'])) {
+            $mobile_to_delete = '../' . $banner['mobile_image_path'];
+            if (file_exists($mobile_to_delete)) {
+                unlink($mobile_to_delete);
+            }
         }
         
         $pdo->prepare("DELETE FROM banners WHERE id = ?")->execute([$id]);
@@ -150,9 +195,14 @@ $banners = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             <input type="hidden" name="banner_id" value="<?= $b['id'] ?>">
                             
                             <div class="mb-3">
-                                <label class="form-label fw-bold">Replace Image (Optional)</label>
+                                <label class="form-label fw-bold">Replace Desktop Image (Optional)</label>
                                 <input class="form-control" type="file" name="banner_image" accept="image/*">
-                                <small class="text-muted">Leave blank to keep the current image.</small>
+                                <small class="text-muted">Leave blank to keep the current desktop image.</small>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label fw-bold">Replace Mobile Image (Optional)</label>
+                                <input class="form-control" type="file" name="mobile_banner_image" accept="image/*">
+                                <small class="text-muted">Leave blank to keep the current mobile image.</small>
                             </div>
 
                             <div class="mb-3">
@@ -203,8 +253,13 @@ $banners = $stmt->fetchAll(PDO::FETCH_ASSOC);
             </div>
 
             <div class="mb-3">
-                <label class="form-label fw-bold">Banner Image <span class="text-danger">*</span></label>
+                <label class="form-label fw-bold">Desktop Banner Image <span class="text-danger">*</span></label>
                 <input class="form-control" type="file" name="banner_image" accept="image/*" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label fw-bold">Mobile Banner Image (Optional)</label>
+                <input class="form-control" type="file" name="mobile_banner_image" accept="image/*">
+                <small class="text-muted">For best results on phones, upload a square or vertical image. If blank, desktop image is used.</small>
             </div>
 
             <div class="mb-3">

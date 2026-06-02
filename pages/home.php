@@ -63,7 +63,14 @@ include '../includes/header.php';
                       <a href="<?= htmlspecialchars($banner['link_url']) ?>">
                   <?php endif; ?>
                   
-                  <img src="<?= BASE_URL ?><?= htmlspecialchars($banner['image_path']) ?>" class="d-block w-100 carousel-banner-img" alt="<?= htmlspecialchars($banner['title'] ?? 'Banner') ?>">
+                  <?php if (!empty($banner['mobile_image_path'])): ?>
+                      <picture>
+                          <source media="(max-width: 767px)" srcset="<?= BASE_URL ?><?= htmlspecialchars($banner['mobile_image_path']) ?>">
+                          <img src="<?= BASE_URL ?><?= htmlspecialchars($banner['image_path']) ?>" class="d-block w-100 carousel-banner-img" alt="<?= htmlspecialchars($banner['title'] ?? 'Banner') ?>">
+                      </picture>
+                  <?php else: ?>
+                      <img src="<?= BASE_URL ?><?= htmlspecialchars($banner['image_path']) ?>" class="d-block w-100 carousel-banner-img" alt="<?= htmlspecialchars($banner['title'] ?? 'Banner') ?>">
+                  <?php endif; ?>
                   
                   <?php if (!empty($banner['link_url'])): ?>
                       </a>
