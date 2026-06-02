@@ -1,7 +1,7 @@
 <?php
 // config/db.php
 
-if ($_SERVER['HTTP_HOST'] == 'localhost' || $_SERVER['HTTP_HOST'] == '127.0.0.1') {
+if (strpos($_SERVER['HTTP_HOST'], 'localhost') !== false || strpos($_SERVER['HTTP_HOST'], '127.0.0.1') !== false) {
     // Localhost (XAMPP) Setting
     define('BASE_URL', '/apex/');
     $host = 'localhost';

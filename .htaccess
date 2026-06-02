@@ -1,0 +1,14 @@
+Options -Indexes
+
+RewriteEngine On
+
+# Universal rule to remove .php extension
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteRule ^(.*)$ $1.php [L]
+
+# Prevent viewing of .htaccess file
+<Files .htaccess>
+Order allow,deny
+Deny from all
+</Files>
