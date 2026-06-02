@@ -54,15 +54,9 @@ if (!empty($project['mobile_banner'])) {
 <style>
 .project-banner-img {
     width: 100%;
+    height: auto;
     object-fit: contain;
-    max-height: 550px;
     object-position: center;
-}
-@media (max-width: 767px) {
-    .project-banner-img {
-        height: auto;
-        object-fit: contain;
-    }
 }
 </style>
 <!-- Project Hero -->
