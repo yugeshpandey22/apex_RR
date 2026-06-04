@@ -152,7 +152,7 @@ if (!empty($project['mobile_banner'])) {
                             <input type="email" class="form-control p-3 rounded-3 bg-white border" name="email" placeholder="Enter your email address" required>
                         </div>
                         <div class="mb-4">
-                            <input type="tel" class="form-control p-3 rounded-3 bg-white border" name="phone" placeholder="Enter your phone number" required>
+                            <input type="tel" class="form-control p-3 rounded-3 bg-white border" name="phone" placeholder="Enter your phone number" pattern="[0-9]{10}" maxlength="10" minlength="10" oninput="this.value = this.value.replace(/[^0-9]/g, '')" title="Please enter exactly 10 digits" required>
                         </div>
                         <button type="submit" class="btn btn-warning w-100 py-3 rounded-3 fw-bold fs-5 text-dark shadow-sm hover-lift">Request Callback</button>
                     </form>

@@ -7,5 +7,17 @@
 <!-- Custom JS -->
 <script src="<?= BASE_URL ?>assets/js/main.js"></script>
 
-
-
+<!-- intl-tel-input JS for country code -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+<script>
+  $(document).ready(function() {
+      var phoneInputs = document.querySelectorAll('input[type="tel"]');
+      phoneInputs.forEach(function(input) {
+          window.intlTelInput(input, {
+              initialCountry: "in",
+              separateDialCode: true,
+              utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+          });
+      });
+  });
+</script>

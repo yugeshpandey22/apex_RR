@@ -112,16 +112,16 @@ $apex_projects = $stmt_apex->fetchAll(PDO::FETCH_ASSOC);
         <p class="text-muted mb-4">Leave your details and we will get back to you shortly.</p>
         <form action="send-enquiry" method="POST">
             <div class="mb-3">
-                <input type="text" class="form-control p-3" placeholder="Your Full Name" required>
+                <input type="text" class="form-control p-3" name="name" placeholder="Your Full Name" required>
             </div>
             <div class="mb-3">
-                <input type="email" class="form-control p-3" placeholder="Your Email Address" required>
+                <input type="email" class="form-control p-3" name="email" placeholder="Your Email Address" required>
             </div>
             <div class="mb-3">
-                <input type="tel" class="form-control p-3" placeholder="Your Phone Number" required>
+                <input type="tel" class="form-control p-3" name="phone" placeholder="Your Phone Number" pattern="[0-9]{10}" maxlength="10" minlength="10" oninput="this.value = this.value.replace(/[^0-9]/g, '')" title="Please enter exactly 10 digits" required>
             </div>
             <div class="mb-3">
-                <textarea class="form-control p-3" placeholder="I am interested in..." rows="3"></textarea>
+                <textarea class="form-control p-3" name="message" placeholder="I am interested in..." rows="3"></textarea>
             </div>
             <button type="submit" class="btn btn-warning text-white w-100 py-3 fw-bold">Submit Enquiry</button>
         </form>

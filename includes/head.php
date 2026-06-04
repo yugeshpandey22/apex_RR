@@ -11,6 +11,12 @@
 <!-- FontAwesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+<!-- intl-tel-input CSS for country code -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css"/>
+<style>
+  .iti { width: 100%; }
+</style>
+
 <!-- Custom Global CSS -->
 <link rel="stylesheet" href="<?= BASE_URL ?>assets/css/style.css">
 <link rel="stylesheet" href="<?= BASE_URL ?>assets/css/responsive.css">
