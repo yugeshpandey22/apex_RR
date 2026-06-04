@@ -23,6 +23,28 @@ $media = $stmt_media->fetchAll(PDO::FETCH_ASSOC);
 
 $success_msg = '';
 
+// Handle Delete Media Request
+if (isset($_GET['delete_media']) && is_numeric($_GET['delete_media'])) {
+    $media_id = $_GET['delete_media'];
+    $stmt_check = $pdo->prepare("SELECT file_path FROM project_media WHERE id = ? AND project_id = ?");
+    $stmt_check->execute([$media_id, $id]);
+    $media_to_delete = $stmt_check->fetch(PDO::FETCH_ASSOC);
+
+    if ($media_to_delete) {
+        $physical_path = '../' . $media_to_delete['file_path'];
+        if (file_exists($physical_path)) {
+            unlink($physical_path);
+        }
+        $stmt_del = $pdo->prepare("DELETE FROM project_media WHERE id = ?");
+        $stmt_del->execute([$media_id]);
+        $success_msg = "Image deleted successfully!";
+        
+        // Re-fetch media
+        $stmt_media->execute([$id]);
+        $media = $stmt_media->fetchAll(PDO::FETCH_ASSOC);
+    }
+}
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['edit_project'])) {
     $category = $_POST['category'];
     $title = $_POST['title'];
@@ -199,8 +221,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['edit_project'])) {
                     <label class="form-label fw-bold">Current Gallery Images</label>
                     <div class="row g-3 mb-3">
                         <?php foreach ($media as $img): ?>
-                            <div class="col-md-3">
-                                <img src="<?= BASE_URL ?><?= htmlspecialchars($img['file_path']) ?>" class="img-fluid rounded border" alt="Project Image">
+                            <div class="col-md-3 position-relative">
+                                <img src="<?= BASE_URL ?><?= htmlspecialchars($img['file_path']) ?>" class="img-fluid rounded border w-100 object-fit-cover" style="height: 150px;" alt="Project Image">
+                                <a href="edit_project?id=<?= $id ?>&delete_media=<?= $img['id'] ?>" class="btn btn-danger btn-sm position-absolute" style="top: 10px; right: 20px; border-radius: 50%; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center;" onclick="return confirm('Are you sure you want to delete this image?');">
+                                    <i class="fa-solid fa-trash"></i>
+                                </a>
                             </div>
                         <?php endforeach; ?>
                         <?php if (count($media) == 0): ?>
