@@ -64,6 +64,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['edit_project'])) {
     $stmt_update = $pdo->prepare("UPDATE projects SET category=?, title=?, short_description=?, description=?, specifications=?, seo_title=?, seo_description=?, desktop_banner=?, mobile_banner=? WHERE id=?");
     $stmt_update->execute([$category, $title, $short_description, $description, $specifications, $seo_title, $seo_description, $desktop_banner_path, $mobile_banner_path, $id]);
 
+    if (!empty($_FILES['new_images']['name'][0])) {
+        foreach ($_FILES['new_images']['name'] as $key => $filename) {
+            $tmp_name = $_FILES['new_images']['tmp_name'][$key];
+            $error = $_FILES['new_images']['error'][$key];
+            
+            if ($error === UPLOAD_ERR_OK) {
+                $ext = pathinfo($filename, PATHINFO_EXTENSION);
+                $new_filename = uniqid() . '_' . time() . '.' . $ext;
+                $target_file = $upload_dir . $new_filename;
+                
+                if (move_uploaded_file($tmp_name, $target_file)) {
+                    $media_path = 'assets/images/projects/' . $new_filename;
+                    $stmt_media_insert = $pdo->prepare("INSERT INTO project_media (project_id, file_path) VALUES (?, ?)");
+                    $stmt_media_insert->execute([$id, $media_path]);
+                }
+            }
+        }
+        
+        // Re-fetch media to show newly added images immediately
+        $stmt_media->execute([$id]);
+        $media = $stmt_media->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     $success_msg = "Project updated successfully!";
     
     // Refresh data
@@ -168,11 +191,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['edit_project'])) {
                             </div>
                         </div>
                     </div>
-
-                    <div class="alert alert-info">
-                        <i class="fa-solid fa-info-circle"></i> Currently, editing or deleting individual gallery images is not supported. You can delete the entire project to start over if needed.
+                    <div class="mb-4 p-4 border rounded bg-white shadow-sm">
+                        <label for="newImages" class="form-label fw-bold">Add More Gallery Images</label>
+                        <input class="form-control" type="file" id="newImages" name="new_images[]" multiple accept="image/*">
+                        <div class="form-text">Select multiple images to append to the existing gallery. Existing images will not be deleted.</div>
                     </div>
-
                     <label class="form-label fw-bold">Current Gallery Images</label>
                     <div class="row g-3 mb-3">
                         <?php foreach ($media as $img): ?>

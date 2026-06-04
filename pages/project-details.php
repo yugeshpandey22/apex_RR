@@ -120,14 +120,27 @@ if (!empty($project['mobile_banner'])) {
                     </div>
                     <h3 class="h2 fw-bold mb-0 tp-heading-font" style="color: var(--secondary-color);">Photo Gallery</h3>
                 </div>
-                <div class="row g-4">
-                    <?php foreach ($media as $image): ?>
-                    <div class="col-md-6 col-lg-6">
-                        <div class="gallery-img-wrap shadow-sm rounded-4 overflow-hidden h-100 hover-lift" style="cursor: pointer;">
-                            <img src="<?= BASE_URL ?><?= htmlspecialchars($image['file_path']) ?>" class="img-fluid w-100 h-100 object-fit-cover transition-all" style="min-height: 250px; max-height: 300px;" alt="Gallery Image" onclick="window.open(this.src, '_blank')">
-                        </div>
+                <div id="projectGalleryCarousel" class="carousel slide shadow-sm rounded-4 overflow-hidden" data-bs-ride="carousel">
+                    <div class="carousel-indicators">
+                        <?php foreach ($media as $index => $image): ?>
+                            <button type="button" data-bs-target="#projectGalleryCarousel" data-bs-slide-to="<?= $index ?>" <?= $index === 0 ? 'class="active" aria-current="true"' : '' ?> aria-label="Slide <?= $index + 1 ?>"></button>
+                        <?php endforeach; ?>
                     </div>
-                    <?php endforeach; ?>
+                    <div class="carousel-inner">
+                        <?php foreach ($media as $index => $image): ?>
+                            <div class="carousel-item <?= $index === 0 ? 'active' : '' ?>">
+                                <img src="<?= BASE_URL ?><?= htmlspecialchars($image['file_path']) ?>" class="d-block w-100 object-fit-cover" style="height: 500px; cursor: pointer;" alt="Gallery Image" onclick="window.open(this.src, '_blank')">
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#projectGalleryCarousel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true" style="background-color: rgba(0,0,0,0.5); border-radius: 50%; padding: 20px; background-size: 50%;"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#projectGalleryCarousel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true" style="background-color: rgba(0,0,0,0.5); border-radius: 50%; padding: 20px; background-size: 50%;"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
                 </div>
                 <?php endif; ?>
             </div>
