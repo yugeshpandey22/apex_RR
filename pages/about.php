@@ -17,8 +17,10 @@ $banner_subtitle = $page_banner && !empty($page_banner['subtitle']) ? $page_bann
 <style>
 @media(max-width: 767px) {
     .project-page-banner {
-        height: 250px !important;
+        height: auto !important;
+        min-height: 250px !important;
         object-fit: cover !important;
+        object-position: center !important;
     }
 }
 </style>
