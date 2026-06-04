@@ -15,12 +15,16 @@ $banner_title = $page_banner && !empty($page_banner['title']) ? $page_banner['ti
 $banner_subtitle = $page_banner && !empty($page_banner['subtitle']) ? $page_banner['subtitle'] : 'Building Trust, Delivering Excellence';
 ?>
 <style>
+.project-page-banner {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
 @media(max-width: 767px) {
     .project-page-banner {
-        height: auto !important;
-        min-height: 250px !important;
-        object-fit: cover !important;
-        object-position: center !important;
+        height: 250px !important;
     }
 }
 </style>
@@ -29,10 +33,10 @@ $banner_subtitle = $page_banner && !empty($page_banner['subtitle']) ? $page_bann
     <?php if ($banner_mobile): ?>
         <picture>
             <source media="(max-width: 767px)" srcset="<?= htmlspecialchars($banner_mobile) ?>">
-            <img src="<?= htmlspecialchars($banner_desktop) ?>" class="w-100 project-page-banner" alt="<?= htmlspecialchars($banner_title) ?>" style="height: 400px; object-fit: cover; display: block;">
+            <img src="<?= htmlspecialchars($banner_desktop) ?>" class="project-page-banner" alt="<?= htmlspecialchars($banner_title) ?>">
         </picture>
     <?php else: ?>
-        <img src="<?= htmlspecialchars($banner_desktop) ?>" class="w-100 project-page-banner" alt="<?= htmlspecialchars($banner_title) ?>" style="height: 400px; object-fit: cover; display: block;">
+        <img src="<?= htmlspecialchars($banner_desktop) ?>" class="project-page-banner" alt="<?= htmlspecialchars($banner_title) ?>">
     <?php endif; ?>
     
     <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center text-center text-white" style="background: rgba(0,0,0,0.4); pointer-events: none;">
