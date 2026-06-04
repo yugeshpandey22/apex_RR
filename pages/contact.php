@@ -5,8 +5,12 @@ $stmt = $pdo->prepare("SELECT * FROM page_banners WHERE page_name = 'contact'");
 $stmt->execute();
 $page_banner = $stmt->fetch(PDO::FETCH_ASSOC);
 
-$banner_desktop = $page_banner && !empty($page_banner['desktop_image']) ? BASE_URL . $page_banner['desktop_image'] : BASE_URL . 'assets/images/contact%20banner.webp';
-$banner_mobile = $page_banner && !empty($page_banner['mobile_image']) ? BASE_URL . $page_banner['mobile_image'] : null;
+$banner_desktop_raw = $page_banner && !empty($page_banner['desktop_image']) ? BASE_URL . $page_banner['desktop_image'] : BASE_URL . 'assets/images/contact%20banner.webp';
+$banner_desktop = str_replace(' ', '%20', $banner_desktop_raw);
+
+$banner_mobile_raw = $page_banner && !empty($page_banner['mobile_image']) ? BASE_URL . $page_banner['mobile_image'] : null;
+$banner_mobile = $banner_mobile_raw ? str_replace(' ', '%20', $banner_mobile_raw) : null;
+
 $banner_title = $page_banner && !empty($page_banner['title']) ? $page_banner['title'] : '';
 $banner_subtitle = $page_banner && !empty($page_banner['subtitle']) ? $page_banner['subtitle'] : '';
 ?>
