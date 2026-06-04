@@ -14,23 +14,15 @@ $banner_mobile = $banner_mobile_raw ? str_replace(' ', '%20', $banner_mobile_raw
 $banner_title = $page_banner && !empty($page_banner['title']) ? $page_banner['title'] : '';
 $banner_subtitle = $page_banner && !empty($page_banner['subtitle']) ? $page_banner['subtitle'] : '';
 ?>
-<style>
-@media(max-width: 767px) {
-    .project-page-banner {
-        height: auto !important;
-        object-fit: contain !important;
-    }
-}
-</style>
 <!-- Page Header -->
 <section class="position-relative w-100 p-0 m-0 text-center overflow-hidden">
     <?php if ($banner_mobile): ?>
         <picture>
             <source media="(max-width: 767px)" srcset="<?= htmlspecialchars($banner_mobile) ?>">
-            <img src="<?= htmlspecialchars($banner_desktop) ?>" class="img-fluid w-100 d-block project-page-banner" alt="Contact Us" style="aspect-ratio: 1894 / 620; max-height: 620px; object-fit: cover; object-position: center;">
+            <img src="<?= htmlspecialchars($banner_desktop) ?>" class="img-fluid w-100 d-block" alt="Contact Us">
         </picture>
     <?php else: ?>
-        <img src="<?= htmlspecialchars($banner_desktop) ?>" class="img-fluid w-100 d-block project-page-banner" alt="Contact Us" style="aspect-ratio: 1894 / 620; max-height: 620px; object-fit: cover; object-position: center;">
+        <img src="<?= htmlspecialchars($banner_desktop) ?>" class="img-fluid w-100 d-block" alt="Contact Us">
     <?php endif; ?>
     
     <?php if ($banner_title || $banner_subtitle): ?>
