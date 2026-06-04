@@ -113,7 +113,7 @@ $banner_subtitle = $page_banner && !empty($page_banner['subtitle']) ? $page_bann
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label fw-semibold">Phone Number <span class="text-danger">*</span></label>
-                                <input type="tel" class="form-control p-3" name="phone" placeholder="+91 xxxxx xxxxx" pattern="[0-9]{10}" maxlength="10" minlength="10" oninput="this.value = this.value.replace(/[^0-9]/g, '')" title="Please enter exactly 10 digits" required>
+                                <input type="tel" class="form-control py-3 pe-3" name="phone" placeholder="xxxxx xxxxx" pattern="[0-9]{10}" maxlength="10" minlength="10" oninput="this.value = this.value.replace(/[^0-9]/g, '')" title="Please enter exactly 10 digits" required>
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label fw-semibold">Email Address</label>
