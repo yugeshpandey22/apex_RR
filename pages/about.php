@@ -19,10 +19,10 @@ $banner_subtitle = $page_banner && !empty($page_banner['subtitle']) ? $page_bann
     <?php if ($banner_mobile): ?>
         <picture>
             <source media="(max-width: 767px)" srcset="<?= htmlspecialchars($banner_mobile) ?>">
-            <img src="<?= htmlspecialchars($banner_desktop) ?>" class="img-fluid w-100 d-block" alt="<?= htmlspecialchars($banner_title) ?>">
+            <img src="<?= htmlspecialchars($banner_desktop) ?>" class="img-fluid w-100 d-block" alt="<?= htmlspecialchars($banner_title) ?>" style="height: 400px; object-fit: cover; object-position: center;">
         </picture>
     <?php else: ?>
-        <img src="<?= htmlspecialchars($banner_desktop) ?>" class="img-fluid w-100 d-block" alt="<?= htmlspecialchars($banner_title) ?>">
+        <img src="<?= htmlspecialchars($banner_desktop) ?>" class="img-fluid w-100 d-block" alt="<?= htmlspecialchars($banner_title) ?>" style="height: 400px; object-fit: cover; object-position: center;">
     <?php endif; ?>
     
 
