@@ -14,28 +14,24 @@ $stmt_banner = $pdo->prepare("SELECT * FROM page_banners WHERE page_name = 'rr_p
 $stmt_banner->execute();
 $page_banner = $stmt_banner->fetch(PDO::FETCH_ASSOC);
 
-$banner_desktop = $page_banner && !empty($page_banner['desktop_image']) ? BASE_URL . $page_banner['desktop_image'] : BASE_URL . 'assets/images/rr%20home%20banner.webp';
-$banner_mobile = $page_banner && !empty($page_banner['mobile_image']) ? BASE_URL . $page_banner['mobile_image'] : null;
+$banner_desktop_raw = $page_banner && !empty($page_banner['desktop_image']) ? BASE_URL . $page_banner['desktop_image'] : BASE_URL . 'assets/images/rr%20home%20banner.webp';
+$banner_desktop = str_replace(' ', '%20', $banner_desktop_raw);
+
+$banner_mobile_raw = $page_banner && !empty($page_banner['mobile_image']) ? BASE_URL . $page_banner['mobile_image'] : null;
+$banner_mobile = $banner_mobile_raw ? str_replace(' ', '%20', $banner_mobile_raw) : null;
+
 $banner_title = $page_banner && !empty($page_banner['title']) ? $page_banner['title'] : 'RR Home Projects';
 $banner_subtitle = $page_banner && !empty($page_banner['subtitle']) ? $page_banner['subtitle'] : 'Explore our premium residential developments';
 ?>
-<style>
-@media(max-width: 767px) {
-    .project-page-banner {
-        height: 250px !important;
-        object-fit: cover !important;
-    }
-}
-</style>
 <!-- Page Header -->
-<section class="position-relative bg-dark w-100 overflow-hidden">
+<section class="position-relative bg-dark w-100 overflow-hidden text-center">
     <?php if ($banner_mobile): ?>
         <picture>
             <source media="(max-width: 767px)" srcset="<?= htmlspecialchars($banner_mobile) ?>">
-            <img src="<?= htmlspecialchars($banner_desktop) ?>" class="w-100 project-page-banner" alt="<?= htmlspecialchars($banner_title) ?>" style="height: 400px; object-fit: fill; display: block;">
+            <img src="<?= htmlspecialchars($banner_desktop) ?>" class="img-fluid w-100 d-block" alt="<?= htmlspecialchars($banner_title) ?>">
         </picture>
     <?php else: ?>
-        <img src="<?= htmlspecialchars($banner_desktop) ?>" class="w-100 project-page-banner" alt="<?= htmlspecialchars($banner_title) ?>" style="height: 400px; object-fit: fill; display: block;">
+        <img src="<?= htmlspecialchars($banner_desktop) ?>" class="img-fluid w-100 d-block" alt="<?= htmlspecialchars($banner_title) ?>">
     <?php endif; ?>
     
     <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center text-center text-white" style="background: rgba(0,0,0,0.3); pointer-events: none;">
