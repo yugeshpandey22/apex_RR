@@ -124,5 +124,19 @@
     </div>
 </div>
 
+<div id="uploadLoader" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(255,255,255,0.8); z-index:9999; text-align:center; padding-top:20%;">
+    <div class="spinner-border text-primary" role="status" style="width: 4rem; height: 4rem;">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+    <h4 class="mt-4 text-dark fw-bold">Uploading images, please wait...</h4>
+    <p class="text-muted">High quality images might take a few moments depending on your internet speed.</p>
+</div>
+
+<script>
+document.querySelector('form').addEventListener('submit', function() {
+    document.getElementById('uploadLoader').style.display = 'block';
+});
+</script>
+
 <?php include 'includes/footer.php'; ?>
 
